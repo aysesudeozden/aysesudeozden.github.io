@@ -11,7 +11,7 @@
         rel="stylesheet" />
 
     <style>
-        /* ... (ÖNCEKİ CSS KODLARI AYNEN BURADA KALACAK) ... */
+        /* ... (ÖNCEKİ CSS KODLARI AYNEN BURADA KALIYOR) ... */
 
         :root {
             --maroon: #250604;
@@ -341,7 +341,7 @@
         </div>
 
         <div class="col-right contact-right">
-            <form id="contact-form" action="https://formspree.io/f/mqavyndy" method="POST">
+            <form id="contact-form" name="contact-form">
 
                 <div class="form-group">
                     <label for="name">ADINIZ SOYADINIZ</label>
@@ -400,55 +400,46 @@
             });
         });
 
-        // --- FORM GÖNDERME İŞLEMİ (AJAX) ---
-        var form = document.getElementById("contact-form");
+        // --- GOOGLE APPS SCRIPT BAĞLANTISI ---
+        
+        // ÖNEMLİ: Aşağıdaki 'GOOGLE_SCRIPT_URL_BURAYA' kısmına 
+        // Google Apps Script'ten aldığın Web App URL'sini yapıştırmalısın.
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwFUlpVvWB0NKBiAwoSyETZbbp9IES8osSbhdtziOfYa2Gnuo6QPnRDfGop1wvAgssViA/exec'; 
+        
+        const form = document.forms['contact-form'];
+        const statusMsg = document.getElementById('status-message');
+        const submitBtn = document.getElementById('submit-btn');
 
-        async function handleSubmit(event) {
-            event.preventDefault(); // Sayfanın yenilenmesini engeller
-            var status = document.getElementById("status-message");
-            var btn = document.getElementById("submit-btn");
-            var data = new FormData(event.target);
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = "GÖNDERİLİYOR...";
 
-            // Butonu devre dışı bırak
-            btn.disabled = true;
-            btn.innerHTML = "GÖNDERİLİYOR...";
-
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "Mesajınız başarıyla gönderildi!";
-                    status.className = "status-success";
-                    status.style.display = "block";
-                    form.reset(); // Formu temizle
-                    btn.innerHTML = "GÖNDERİLDİ";
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Gönderim sırasında bir hata oluştu.";
-                        }
-                        status.className = "status-error";
-                        status.style.display = "block";
-                        btn.disabled = false;
-                        btn.innerHTML = "TEKRAR DENE";
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "Bir bağlantı hatası oluştu.";
-                status.className = "status-error";
-                status.style.display = "block";
-                btn.disabled = false;
-                btn.innerHTML = "TEKRAR DENE";
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                statusMsg.innerHTML = "Mesajınız başarıyla gönderildi!";
+                statusMsg.className = "status-success";
+                statusMsg.style.display = "block";
+                submitBtn.innerHTML = "GÖNDERİLDİ";
+                form.reset();
+                
+                // 3 saniye sonra butonu eski haline getir
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = "GÖNDER";
+                    statusMsg.style.display = "none";
+                }, 3000);
+            })
+            .catch(error => {
+                statusMsg.innerHTML = "Hata oluştu! Lütfen daha sonra tekrar deneyin.";
+                statusMsg.className = "status-error";
+                statusMsg.style.display = "block";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "TEKRAR DENE";
+                console.error('Error!', error.message);
             });
-        }
-
-        form.addEventListener("submit", handleSubmit);
+        });
     </script>
 </body>
 
