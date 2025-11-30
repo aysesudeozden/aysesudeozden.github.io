@@ -101,6 +101,12 @@
             width: 20px;
         }
 
+        .section-split {
+            display: flex;
+            min-height: 90vh;
+            border-bottom: 1px solid var(--border-color);
+        }
+
         /* Projeler Sayfası Özel */
         .projects-container {
             margin-top: 70px;
@@ -138,7 +144,7 @@
         }
 
         .project-card {
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--accent-text); /* Rengi değişken yaptık */
             padding: 2rem;
             transition: transform 0.3s;
             cursor: pointer;
@@ -212,6 +218,10 @@
 
             nav ul li a {
                 font-size: 0.7rem;
+            }
+            
+            .section-split {
+                flex-direction: column;
             }
 
             .hero-title {
