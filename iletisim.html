@@ -75,6 +75,7 @@
             z-index: 1000;
             background: var(--bg-color);
             border-bottom: 3px solid var(--border-color);
+            transition: all 0.4s ease;
         }
 
         .brand {
@@ -123,12 +124,16 @@
             background-color: var(--accent-bg);
             color: var(--accent-text);
             align-items: flex-start;
+            transition: all 0.4s ease;
+            /* EKLENDİ */
         }
 
         .contact-right {
             background-color: var(--bg-color);
             color: var(--text-color);
             align-items: center;
+            transition: all 0.4s ease;
+            /* EKLENDİ */
         }
 
         .contact-title {
@@ -401,44 +406,44 @@
         });
 
         // --- GOOGLE APPS SCRIPT BAĞLANTISI ---
-        
+
         // ÖNEMLİ: Aşağıdaki 'GOOGLE_SCRIPT_URL_BURAYA' kısmına 
         // Google Apps Script'ten aldığın Web App URL'sini yapıştırmalısın.
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbze0zqbzLc7k8yLB6uWZjEgV9Pn0MPlAC_qOhlo9Lq_NyqE-_mv9VwHxVvu3y81a9gFxQ/exec'; 
-        
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbze0zqbzLc7k8yLB6uWZjEgV9Pn0MPlAC_qOhlo9Lq_NyqE-_mv9VwHxVvu3y81a9gFxQ/exec';
+
         const form = document.forms['contact-form'];
         const statusMsg = document.getElementById('status-message');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', e => {
-          e.preventDefault();
-          
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = "GÖNDERİLİYOR...";
+            e.preventDefault();
 
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                statusMsg.innerHTML = "Mesajınız başarıyla gönderildi!";
-                statusMsg.className = "status-success";
-                statusMsg.style.display = "block";
-                submitBtn.innerHTML = "GÖNDERİLDİ";
-                form.reset();
-                
-                // 3 saniye sonra butonu eski haline getir
-                setTimeout(() => {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "GÖNDERİLİYOR...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    statusMsg.innerHTML = "Mesajınız başarıyla gönderildi!";
+                    statusMsg.className = "status-success";
+                    statusMsg.style.display = "block";
+                    submitBtn.innerHTML = "GÖNDERİLDİ";
+                    form.reset();
+
+                    // 3 saniye sonra butonu eski haline getir
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = "GÖNDER";
+                        statusMsg.style.display = "none";
+                    }, 3000);
+                })
+                .catch(error => {
+                    statusMsg.innerHTML = "Hata oluştu! Lütfen daha sonra tekrar deneyin.";
+                    statusMsg.className = "status-error";
+                    statusMsg.style.display = "block";
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = "GÖNDER";
-                    statusMsg.style.display = "none";
-                }, 3000);
-            })
-            .catch(error => {
-                statusMsg.innerHTML = "Hata oluştu! Lütfen daha sonra tekrar deneyin.";
-                statusMsg.className = "status-error";
-                statusMsg.style.display = "block";
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = "TEKRAR DENE";
-                console.error('Error!', error.message);
-            });
+                    submitBtn.innerHTML = "TEKRAR DENE";
+                    console.error('Error!', error.message);
+                });
         });
     </script>
 </body>
