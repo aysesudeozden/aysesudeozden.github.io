@@ -353,12 +353,13 @@
     </div>
 
     <div class="col-right hero-right">
-      <video class="hero-image" autoplay muted loop playsinline>
-        <source src="assets/sude.mp4" type="video/mp4">
+      <video id="heroVideo" class="hero-image" autoplay muted loop playsinline src="assets/1131.mp4">
         Tarayıcınız video etiketini desteklemiyor.
       </video>
     </div>
   </header>
+
+
 
   <footer>
     <p style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">
@@ -376,19 +377,28 @@
     function hideLoader() { document.getElementById('loader').style.display = 'none'; }
     window.addEventListener('load', hideLoader);
 
-    // DARK MODE (LocalStorage ile Kaydetme)
+    // DARK MODE (LocalStorage ile Kaydetme ve Video Kontrolü)
     const body = document.body;
     const lightIcon = document.getElementById('lightIcon');
     const darkIcon = document.getElementById('darkIcon');
+
+    // Videoyu seçiyoruz (HTML'de id="heroVideo" olduğundan emin olun)
+    const heroVideo = document.getElementById('heroVideo');
 
     // Sayfa açıldığında kayıtlı temayı kontrol et
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark');
       lightIcon.style.display = 'none';
       darkIcon.style.display = 'block';
+
+      // Eğer tema dark ise açılışta dark videosunu ayarla
+      if (heroVideo) heroVideo.src = 'assets/1130.mp4';
     } else {
       lightIcon.style.display = 'block';
       darkIcon.style.display = 'none';
+
+      // Eğer tema light ise (veya kayıt yoksa) light videosunu ayarla
+      if (heroVideo) heroVideo.src = 'assets/1131.mp4';
     }
 
     function toggleDarkMode() {
@@ -397,6 +407,13 @@
 
       lightIcon.style.display = isDark ? 'none' : 'block';
       darkIcon.style.display = isDark ? 'block' : 'none';
+
+      // Videoyu değiştir
+      if (heroVideo) {
+        heroVideo.src = isDark ? 'assets/1130.mp4' : 'assets/1131.mp4';
+        heroVideo.load(); // Yeni kaynağı yükle
+        heroVideo.play(); // Oynatmaya başla
+      }
 
       // Seçimi kaydet
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
