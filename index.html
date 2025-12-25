@@ -67,8 +67,10 @@
       position: fixed;
       top: 0;
       width: 100%;
-      height: 70px; /* Navigasyon yüksekliğini sabitledik */
-      padding: 0 2rem; /* Padding'i sadece yanlardan verdik, yükseklik sabit */
+      height: 70px;
+      /* Navigasyon yüksekliğini sabitledik */
+      padding: 0 2rem;
+      /* Padding'i sadece yanlardan verdik, yükseklik sabit */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -97,6 +99,34 @@
       text-transform: uppercase;
     }
 
+    nav ul li span {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 3px;
+    }
+
+    nav ul li span::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #3e0c0d;
+      transform-origin: bottom right;
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+
+    nav ul li span:hover::before {
+      transform-origin: bottom left;
+      transform: scaleX(1);
+    }
+
+    body.dark nav ul li span::before {
+      background-color: #faf2e7;
+    }
+
     .dark-toggle {
       background: none;
       border: none;
@@ -108,8 +138,9 @@
     .section-split {
       display: flex;
       /* Ekran boyutu (100vh) - Navbar yüksekliği (70px) = Tam ekran */
-      height: calc(100vh - 70px); 
-      min-height: 600px; /* Çok küçük ekranlarda içerik sıkışmasın diye güvenlik önlemi */
+      height: calc(100vh - 70px);
+      min-height: 600px;
+      /* Çok küçük ekranlarda içerik sıkışmasın diye güvenlik önlemi */
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -121,11 +152,13 @@
       flex-direction: column;
       justify-content: center;
       position: relative;
-      height: 100%; /* Kapsayıcının tam boyunu alması için */
+      height: 100%;
+      /* Kapsayıcının tam boyunu alması için */
     }
 
     .hero-section {
-      margin-top: 70px; /* Navbar yüksekliği kadar aşağı itiyoruz */
+      margin-top: 70px;
+      /* Navbar yüksekliği kadar aşağı itiyoruz */
     }
 
     /* HERO STYLES */
@@ -170,7 +203,8 @@
     .hero-image {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Videonun alanı tamamen kaplamasını sağlar */
+      object-fit: cover;
+      /* Videonun alanı tamamen kaplamasını sağlar */
       display: block;
     }
 
@@ -262,7 +296,7 @@
       /* Mobilde tam ekran zorunluluğunu kaldırıyoruz, içerik kadar uzasın */
       .section-split {
         flex-direction: column;
-        height: auto; 
+        height: auto;
       }
 
       .hero-section {
@@ -271,7 +305,8 @@
       }
 
       .hero-right {
-        height: 300px; /* Mobilde video yüksekliği */
+        height: 300px;
+        /* Mobilde video yüksekliği */
       }
 
       .col-left,
@@ -298,9 +333,9 @@
   <nav>
     <div class="brand"><a href="index.html">A. SUDE ÖZDEN</a></div>
     <ul>
-      <li><a href="hakkimda.html">Hakkımda</a></li>
-      <li><a href="projeler.html">Projeler</a></li>
-      <li><a href="iletisim.html">İletişim</a></li>
+      <li><span><a href="hakkimda.html">Hakkımda</a></span></li>
+      <li><span><a href="projeler.html">Projeler</a></span></li>
+      <li><span><a href="iletisim.html">İletişim</a></span></li>
       <li>
         <button class="dark-toggle" onclick="toggleDarkMode()">
           <img id="darkIcon"
@@ -338,10 +373,8 @@
 
   <footer>
     <p style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">
-      İLETİŞİME GEÇ
     </p>
-    <a href="iletisim.html"
-      style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">aysesudeozden@gmail.com</a>
+    <a href="game-tr.html" style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Oyun oynayalım!</a>
     <br><br>
     <p style="opacity: 0.6; font-size: 0.7rem;">&copy; 2025 AYŞE SUDE ÖZDEN. TÜM HAKLARI SAKLIDIR.</p>
   </footer>
