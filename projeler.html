@@ -94,6 +94,34 @@
             text-transform: uppercase;
         }
 
+        nav ul li span {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        nav ul li span::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #3e0c0d;
+            transform-origin: bottom right;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        nav ul li span:hover::before {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+
+        body.dark nav ul li span::before {
+            background-color: #faf2e7;
+        }
+
         .dark-toggle {
             background: none;
             border: none;
@@ -139,7 +167,8 @@
         }
 
         .project-card {
-            border: 1px solid var(--accent-text); /* Rengi değişken yaptık */
+            border: 1px solid var(--accent-text);
+            /* Rengi değişken yaptık */
             padding: 2rem;
             transition: transform 0.3s;
             cursor: pointer;
@@ -214,8 +243,8 @@
             nav ul li a {
                 font-size: 0.7rem;
             }
-            
-            
+
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -235,9 +264,10 @@
     <nav>
         <div class="brand"><a href="index.html">A. SUDE ÖZDEN</a></div>
         <ul>
-            <li><a href="hakkimda.html">Hakkımda</a></li>
-            <li><a href="projeler.html">Projeler</a></li>
-            <li><a href="iletisim.html">İletişim</a></li>
+            <li><span><a href="hakkimda.html">Hakkımda</a></span></li>
+            <li><span><a href="projeler.html">Projeler</a></span></li>
+            <li><span><a href="iletisim.html">İletişim</a></span></li>
+            <li><span><a href="projects.html">EN</a></span></li>
             <li>
                 <button class="dark-toggle" onclick="toggleDarkMode()">
                     <img id="darkIcon"
