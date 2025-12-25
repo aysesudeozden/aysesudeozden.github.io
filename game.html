@@ -1,58 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Speed-Test | Satır Kaydırmalı</title>
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/512/6655/6655473.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
 
     <style>
-        body { font-family: 'Playfair Display', serif; background: #250604; color: #ccc9bc; overflow-x: hidden; }
-        a { color: #f3efe0; transition: 0.3s; text-decoration: none !important; }
-        .yellow { color: #f3efe0 !important; }
-        .correct { color: #29bb89; }
-        .wrong { color: #e84545; text-decoration: underline; }
-        .current { color: #f3efe0; background-color: #420a0a; border-radius: 4px; padding: 2px; }
-        .center { text-align: center; }
-        .if { display: inline-flex; }
-        .box { max-width: 900px; margin: auto; padding: 0 30px; }
-        #heading { margin-top: 50px; font-size: 1.75rem; font-family: 'Playfair Display', serif; font-weight: 500; }
-        .limits-box { text-align: right; margin-right: 35px; font-size: 15px; }
-        .stats { margin: 20px auto; }
-        .details { font-size: 5rem; line-height: 1; } 
-        .stat-block { padding: 0 30px; min-width: 200px; }
-        .stat-name { font-size: 1rem; margin-right: 10px; align-self: center; }
-        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: #250604;
+            color: #ccc9bc;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: #f3efe0;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+
+        .yellow {
+            color: #f3efe0 !important;
+        }
+
+        .correct {
+            color: #29bb89;
+        }
+
+        .wrong {
+            color: #e84545;
+            text-decoration: underline;
+        }
+
+        .current {
+            color: #f3efe0;
+            background-color: #420a0a;
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .if {
+            display: inline-flex;
+        }
+
+        .box {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 30px;
+        }
+
+        #heading {
+            margin-top: 50px;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .limits-box {
+            text-align: right;
+            margin-right: 35px;
+            font-size: 15px;
+        }
+
+        .stats {
+            margin: 20px auto;
+        }
+
+        .details {
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .stat-block {
+            padding: 0 30px;
+            min-width: 200px;
+        }
+
+        .stat-name {
+            font-size: 1rem;
+            margin-right: 10px;
+            align-self: center;
+        }
+
         /* GÜNCELLENEN KISIM: Kelime Alanı */
-        .text-display { 
-            margin-bottom: 25px; 
-            font-size: 28px; 
-            text-align: left; 
-            height: 110px;        /* Yaklaşık 2 satır yüksekliği */
-            line-height: 1.6; 
-            word-spacing: 5px; 
-            overflow: hidden;     /* Taşmalar gizli, JS ile kaydırılacak */
+        .text-display {
+            margin-bottom: 25px;
+            font-size: 28px;
+            text-align: left;
+            height: 110px;
+            /* Yaklaşık 2 satır yüksekliği */
+            line-height: 1.6;
+            word-spacing: 5px;
+            overflow: hidden;
+            /* Taşmalar gizli, JS ile kaydırılacak */
             display: flex;
-            flex-wrap: wrap;      /* Kelimeleri alt satıra atar */
+            flex-wrap: wrap;
+            /* Kelimeleri alt satıra atar */
             align-content: flex-start;
             position: relative;
             scroll-behavior: smooth;
         }
-        .text-display span { margin-right: 15px; display: inline-block; }
-        
-        textarea { background: #2a0505; border: 2px solid #f3efe0; border-radius: 10px; color: #f3efe0; padding: 10px; font-size: 1.5rem; width: 80%; outline: none; text-align: center; }
-        textarea:focus { border-color: #f3efe0; }
-        footer { padding: 40px; font-size: 14px; }
-        .loading { font-style: italic; opacity: 0.5; width: 100%; text-align: center; }
+
+        .text-display span {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        textarea {
+            background: #2a0505;
+            border: 2px solid #f3efe0;
+            border-radius: 10px;
+            color: #f3efe0;
+            padding: 10px;
+            font-size: 1.5rem;
+            width: 80%;
+            outline: none;
+            text-align: center;
+        }
+
+        textarea:focus {
+            border-color: #f3efe0;
+        }
+
+        footer {
+            padding: 40px;
+            font-size: 14px;
+        }
+
+        .loading {
+            font-style: italic;
+            opacity: 0.5;
+            width: 100%;
+            text-align: center;
+        }
     </style>
-</head> 
+</head>
 
 <body>
     <div class="container-fluid box">
         <div class="top d-flex justify-content-between align-items-center">
-            <h1 id="heading" class="yellow" href="game.html">SPEED TEST | <a href="game-tr.html">TR</a></h1>
+            <h1 id="heading" class="yellow" href="game.html">Speed Test <a href="game-tr.html"
+                    style="font-size: 1rem; font-family: 'Inter', sans-serif;">| TR</a></h1>
             <div class="limits-box">
                 <div class="limit">
                     <a id="thirty" class="yellow" href="#">60s</a> | <a id="sixty" href="#">120s</a>
@@ -77,7 +176,8 @@
         <div class="text-display" id="textDisplay">Words are laoding...</div>
 
         <div class="input-area center">
-            <textarea rows="1" class="text-input" id="textInput" autofocus autocomplete="off" placeholder="Start typing..."></textarea>
+            <textarea rows="1" class="text-input" id="textInput" autofocus autocomplete="off"
+                placeholder="Start typing..."></textarea>
         </div>
 
         <div class="restart-button center mt-4">
@@ -114,7 +214,7 @@
         async function displayTest(diff) {
             wordNo = 1;
             testItem.innerHTML = '<span class="loading">Yeni kelimeler getiriliyor...</span>';
-            testItem.scrollTop = 0; 
+            testItem.scrollTop = 0;
             inputItem.disabled = true;
 
             const lengthParam = (diff === 1) ? "&length=5" : "&length=8";
@@ -123,7 +223,7 @@
             try {
                 const response = await fetch(apiUrl);
                 const selectedWords = await response.json();
-                
+
                 testItem.innerHTML = '';
                 selectedWords.forEach(function (word, i) {
                     let wordSpan = document.createElement('span');
@@ -147,7 +247,7 @@
                 flag = 1;
                 timeStart();
             }
-            if (inputItem.value.endsWith(" ")) { 
+            if (inputItem.value.endsWith(" ")) {
                 checkWord();
             } else {
                 currentWord();
@@ -176,13 +276,13 @@
 
             const nextID = "word-" + wordNo;
             const nextSpan = document.getElementById(nextID);
-            
+
             if (nextSpan) {
                 colorSpan(nextID, 2);
                 // SATIR KAYDIRMA KONTROLÜ
                 // Eğer bir sonraki kelimenin tepesi, mevcut görünümün çok altındaysa kaydır
                 if (nextSpan.offsetTop > (testItem.scrollTop + 45)) {
-                    testItem.scrollTop += 45; 
+                    testItem.scrollTop += 45;
                 }
             } else {
                 displayTest(difficulty);
@@ -262,4 +362,5 @@
         function limitInvisible() { [thirty, sixty, beg, pro].forEach(el => el.style.visibility = 'hidden'); }
     </script>
 </body>
+
 </html>
