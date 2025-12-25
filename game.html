@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Speed-Test | Satır Kaydırmalı</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+
+    <style>
+        body { font-family: 'Playfair Display', serif; background: #250604; color: #ccc9bc; overflow-x: hidden; }
+        a { color: #f3efe0; transition: 0.3s; text-decoration: none !important; }
+        .yellow { color: #f3efe0 !important; }
+        .correct { color: #29bb89; }
+        .wrong { color: #e84545; text-decoration: underline; }
+        .current { color: #f3efe0; background-color: #420a0a; border-radius: 4px; padding: 2px; }
+        .center { text-align: center; }
+        .if { display: inline-flex; }
+        .box { max-width: 900px; margin: auto; padding: 0 30px; }
+        #heading { margin-top: 50px; font-size: 1.75rem; font-family: 'Playfair Display', serif; font-weight: 500; }
+        .limits-box { text-align: right; margin-right: 35px; font-size: 15px; }
+        .stats { margin: 20px auto; }
+        .details { font-size: 5rem; line-height: 1; } 
+        .stat-block { padding: 0 30px; min-width: 200px; }
+        .stat-name { font-size: 1rem; margin-right: 10px; align-self: center; }
+        
+        /* GÜNCELLENEN KISIM: Kelime Alanı */
+        .text-display { 
+            margin-bottom: 25px; 
+            font-size: 28px; 
+            text-align: left; 
+            height: 110px;        /* Yaklaşık 2 satır yüksekliği */
+            line-height: 1.6; 
+            word-spacing: 5px; 
+            overflow: hidden;     /* Taşmalar gizli, JS ile kaydırılacak */
+            display: flex;
+            flex-wrap: wrap;      /* Kelimeleri alt satıra atar */
+            align-content: flex-start;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        .text-display span { margin-right: 15px; display: inline-block; }
+        
+        textarea { background: #2a0505; border: 2px solid #f3efe0; border-radius: 10px; color: #f3efe0; padding: 10px; font-size: 1.5rem; width: 80%; outline: none; text-align: center; }
+        textarea:focus { border-color: #f3efe0; }
+        footer { padding: 40px; font-size: 14px; }
+        .loading { font-style: italic; opacity: 0.5; width: 100%; text-align: center; }
+    </style>
+</head> 
+
+<body>
+    <div class="container-fluid box">
+        <div class="top d-flex justify-content-between align-items-center">
+            <h1 id="heading" class="yellow" href="game.html">SPEED TEST | <a href="game-tr.html">TR</a></h1>
+            <div class="limits-box">
+                <div class="limit">
+                    <a id="thirty" class="yellow" href="#">60s</a> | <a id="sixty" href="#">120s</a>
+                </div>
+                <div class="limit">
+                    <a id="beg" class="yellow" href="#">beginner</a> | <a id="pro" href="#">pro</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats center">
+            <div class="stat-block if">
+                <div id="timeName" class="stat-name yellow">Time</div>
+                <div id="time" class="details">60</div>
+            </div>
+            <div class="stat-block if">
+                <div id="cwName" class="stat-name yellow">Correct Words</div>
+                <div id="cw" class="details">0</div>
+            </div>
+        </div>
+
+        <div class="text-display" id="textDisplay">Words are laoding...</div>
+
+        <div class="input-area center">
+            <textarea rows="1" class="text-input" id="textInput" autofocus autocomplete="off" placeholder="Start typing..."></textarea>
+        </div>
+
+        <div class="restart-button center mt-4">
+            <a id="restartBtn" class="current" href="#" style="font-size: 2rem; padding: 10px 20px;">
+                <i class="fas fa-redo"></i>
+            </a>
+        </div>
+
+        <footer class="center">©2025 Powered Typing Test</footer>
+    </div>
+
+    <script>
+        const testItem = document.getElementById("textDisplay");
+        const inputItem = document.getElementById("textInput");
+        const timeName = document.getElementById("timeName");
+        const time = document.getElementById("time");
+        const cwName = document.getElementById("cwName");
+        const cw = document.getElementById("cw");
+        const restartBtn = document.getElementById("restartBtn");
+        const thirty = document.getElementById("thirty");
+        const sixty = document.getElementById("sixty");
+        const beg = document.getElementById("beg");
+        const pro = document.getElementById("pro");
+
+        let wordNo = 1;
+        let wordsSubmitted = 0;
+        let wordsCorrect = 0;
+        let timer = 60;
+        let flag = 0;
+        let factor = 1;
+        let seconds;
+        let difficulty = 1;
+
+        async function displayTest(diff) {
+            wordNo = 1;
+            testItem.innerHTML = '<span class="loading">Yeni kelimeler getiriliyor...</span>';
+            testItem.scrollTop = 0; 
+            inputItem.disabled = true;
+
+            const lengthParam = (diff === 1) ? "&length=5" : "&length=8";
+            const apiUrl = `https://random-word-api.herokuapp.com/word?number=100${lengthParam}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const selectedWords = await response.json();
+                
+                testItem.innerHTML = '';
+                selectedWords.forEach(function (word, i) {
+                    let wordSpan = document.createElement('span');
+                    wordSpan.innerText = word;
+                    wordSpan.setAttribute("id", "word-" + (i + 1));
+                    testItem.appendChild(wordSpan);
+                });
+
+                inputItem.disabled = false;
+                inputItem.focus();
+                colorSpan("word-1", 2);
+            } catch (error) {
+                testItem.innerText = "Hata: Kelimeler yüklenemedi.";
+            }
+        }
+
+        displayTest(difficulty);
+
+        inputItem.addEventListener('input', function (e) {
+            if (flag === 0) {
+                flag = 1;
+                timeStart();
+            }
+            if (inputItem.value.endsWith(" ")) { 
+                checkWord();
+            } else {
+                currentWord();
+            }
+        });
+
+        function checkWord() {
+            const wordEntered = inputItem.value.trim();
+            if (wordEntered === "") { inputItem.value = ''; return; }
+
+            const wordID = "word-" + wordNo;
+            const checkSpan = document.getElementById(wordID);
+            if (!checkSpan) return;
+
+            wordsSubmitted++;
+            if (checkSpan.innerText.trim() === wordEntered) {
+                colorSpan(wordID, 1);
+                wordsCorrect++;
+                cw.innerText = wordsCorrect;
+            } else {
+                colorSpan(wordID, 3);
+            }
+
+            wordNo++;
+            inputItem.value = '';
+
+            const nextID = "word-" + wordNo;
+            const nextSpan = document.getElementById(nextID);
+            
+            if (nextSpan) {
+                colorSpan(nextID, 2);
+                // SATIR KAYDIRMA KONTROLÜ
+                // Eğer bir sonraki kelimenin tepesi, mevcut görünümün çok altındaysa kaydır
+                if (nextSpan.offsetTop > (testItem.scrollTop + 45)) {
+                    testItem.scrollTop += 45; 
+                }
+            } else {
+                displayTest(difficulty);
+            }
+        }
+
+        function currentWord() {
+            const wordEntered = inputItem.value.trim();
+            const currentID = "word-" + wordNo;
+            const currentSpan = document.getElementById(currentID);
+            if (!currentSpan) return;
+
+            if (currentSpan.innerText.trim().startsWith(wordEntered)) {
+                colorSpan(currentID, 2);
+            } else {
+                colorSpan(currentID, 3);
+            }
+        }
+
+        function colorSpan(id, colorType) {
+            const span = document.getElementById(id);
+            if (!span) return;
+            span.classList.remove('correct', 'wrong', 'current');
+            if (colorType === 1) span.classList.add('correct');
+            else if (colorType === 2) span.classList.add('current');
+            else span.classList.add('wrong');
+        }
+
+        // --- Kontrol Butonları ---
+        thirty.addEventListener("click", function (e) { e.preventDefault(); timer = 60; factor = 1; limitColor(thirty, sixty); resetGame(); });
+        sixty.addEventListener("click", function (e) { e.preventDefault(); timer = 120; factor = 0.5; limitColor(sixty, thirty); resetGame(); });
+        beg.addEventListener("click", function (e) { e.preventDefault(); difficulty = 1; limitColor(beg, pro); resetGame(); });
+        pro.addEventListener("click", function (e) { e.preventDefault(); difficulty = 2; limitColor(pro, beg); resetGame(); });
+
+        function limitColor(itema, itemr) { itema.classList.add('yellow'); itemr.classList.remove('yellow'); }
+
+        function resetGame() {
+            clearInterval(seconds);
+            wordsSubmitted = 0; wordsCorrect = 0; flag = 0;
+            time.classList.remove("current"); cw.classList.remove("current");
+            time.innerText = timer; timeName.innerText = "Time";
+            cw.innerText = "0"; cwName.innerText = "Correct Words";
+            inputItem.disabled = false; inputItem.value = '';
+            displayTest(difficulty);
+            limitVisible();
+        }
+
+        restartBtn.addEventListener("click", function (e) { e.preventDefault(); resetGame(); });
+
+        function timeStart() {
+            limitInvisible();
+            seconds = setInterval(function () {
+                let current = parseInt(time.innerText);
+                current--;
+                time.innerText = current;
+                if (current <= 0) {
+                    clearInterval(seconds);
+                    timeOver();
+                }
+            }, 1000);
+        }
+
+        function timeOver() {
+            inputItem.disabled = true;
+            let percentageAcc = wordsSubmitted === 0 ? 0 : Math.floor((wordsCorrect / wordsSubmitted) * 100);
+            let wpm = Math.floor(wordsCorrect / (timer / 60));
+            time.innerText = percentageAcc + "%";
+            timeName.innerText = "ACC";
+            cw.innerText = wpm;
+            cwName.innerText = "WPM";
+            time.classList.add("current");
+            cw.classList.add("current");
+            restartBtn.focus();
+        }
+
+        function limitVisible() { [thirty, sixty, beg, pro].forEach(el => el.style.visibility = 'visible'); }
+        function limitInvisible() { [thirty, sixty, beg, pro].forEach(el => el.style.visibility = 'hidden'); }
+    </script>
+</body>
+</html>
