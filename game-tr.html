@@ -4,346 +4,366 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Hızlı Yazma Testi - Türkçe</title>
+    <title>Yazma Hızı Testi | Ayşe Sude Özden</title>
     <link rel="icon" href="https://cdn-icons-png.freepik.com/512/6655/6655473.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
 
     <style>
+        :root {
+            --maroon: #250604;
+            --cream: #f3efe0;
+            --accent-soft: rgba(243, 239, 224, 0.1);
+            --correct-green: #8da98d;
+            --wrong-red: #a98d8d;
+        }
+
         body {
-            font-family: 'Playfair Display', serif;
-            background: #250604;
-            color: #ccc9bc;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--maroon);
+            color: var(--cream);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
         }
 
-        a {
-            color: #f3efe0;
-            transition: 0.3s;
-            text-decoration: none !important;
+        .header-nav {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(243, 239, 224, 0.1);
         }
 
-        .yellow {
-            color: #f3efe0 !important;
-        }
-
-        .correct {
-            color: #29bb89;
-        }
-
-        .wrong {
-            color: #e84545;
-            text-decoration: underline;
-        }
-
-        .current {
-            color: #f3efe0;
-            background-color: #420a0a;
-            border-radius: 4px;
-            padding: 2px;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .if {
-            display: inline-flex;
-        }
-
-        .box {
-            max-width: 900px;
-            margin: auto;
-            padding: 0 30px;
-        }
-
-        #heading {
-            margin-top: 50px;
-            font-size: 1.5rem;
+        .brand-link {
             font-family: 'Playfair Display', serif;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--cream);
+            letter-spacing: 2px;
         }
 
-        .limits-box {
-            text-align: right;
-            margin-right: 35px;
-            font-size: 15px;
+        .settings-box {
+            display: flex;
+            gap: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-items: center;
         }
 
-        .stats {
-            margin: 20px auto;
+        .settings-box a {
+            color: var(--cream);
+            opacity: 0.4;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        .details {
-            font-size: 5rem;
-            line-height: 1;
+        .settings-box a.active,
+        .settings-box a:hover {
+            opacity: 1;
+        }
+
+        .lang-switch {
+            padding-right: 15px;
+            border-right: 1px solid rgba(243, 239, 224, 0.2);
+        }
+
+        .game-container {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-bottom: 4rem;
         }
 
         .stat-block {
-            padding: 0 30px;
-            min-width: 200px;
-        }
-
-        .stat-name {
-            font-size: 1rem;
-            margin-right: 10px;
-            align-self: center;
-        }
-
-        .text-display {
-            margin-bottom: 25px;
-            font-size: 28px;
-            text-align: left;
-            height: 110px;
-            line-height: 1.6;
-            word-spacing: 5px;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: flex-start;
-            position: relative;
-            scroll-behavior: smooth;
-        }
-
-        .text-display span {
-            margin-right: 15px;
-            display: inline-block;
-        }
-
-        textarea {
-            background: #2a0505;
-            border: 2px solid #f3efe0;
-            border-radius: 10px;
-            color: #f3efe0;
-            padding: 10px;
-            font-size: 1.5rem;
-            width: 80%;
-            outline: none;
             text-align: center;
         }
 
-        textarea:focus {
-            border-color: #f3efe0;
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        .text-window {
+            background: var(--accent-soft);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #textDisplay {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 25px;
+            font-size: 1.6rem;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #textDisplay span {
+            opacity: 0.3;
+            transition: 0.2s;
+        }
+
+        #textDisplay span.current {
+            opacity: 1;
+            color: var(--cream);
+            border-bottom: 2px solid var(--cream);
+        }
+
+        #textDisplay span.correct {
+            color: var(--correct-green);
+            opacity: 0.8;
+        }
+
+        #textDisplay span.wrong {
+            color: var(--wrong-red);
+            opacity: 0.8;
+            text-decoration: line-through;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        #textInput {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(243, 239, 224, 0.2);
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            outline: none;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+
+        #textInput:focus {
+            border-color: var(--cream);
+        }
+
+        .btn-restart {
+            background: transparent;
+            border: 1px solid rgba(243, 239, 224, 0.3);
+            color: var(--cream);
+            padding: 0.8rem 2rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            align-self: center;
+        }
+
+        .btn-restart:hover {
+            background: var(--cream);
+            color: var(--maroon);
         }
 
         footer {
-            padding: 40px;
-            font-size: 14px;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            text-transform: uppercase;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid box">
-        <div class="top d-flex justify-content-between align-items-center">
-            <h1 id="heading" class="yellow" href="game-tr.html">Hız Testi <a href="game.html" style="font-size: 1rem; font-family: 'Inter', sans-serif;">| EN</a>
-            </h1>
-            <div class="limits-box">
-                <div class="limit">
-                    <a id="thirty" class="yellow" href="#">60sn</a> | <a id="sixty" href="#">120sn</a>
-                </div>
-                <div class="limit">
-                    <a id="beg" class="yellow" href="#">başlangıç</a> | <a id="pro" href="#">uzman</a>
-                </div>
+    <header class="header-nav">
+        <a href="index-ing.html" class="brand-link">A. SUDE ÖZDEN</a>
+        <div class="settings-box">
+            <div class="lang-switch">
+                <a href="game.html">EN</a>
+            </div>
+            <div class="timer-select">
+                <a id="sixty" class="active" href="#">60SN</a> | <a id="onetwenty" href="#">120SN</a>
+            </div>
+            <div class="diff-select">
+                <a id="beg" class="active" href="#">BAŞLANGIÇ</a> | <a id="pro" href="#">İLERİ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="game-container">
+        <div class="stats-wrapper">
+            <div class="stat-block">
+                <div class="stat-label" id="labelL">Süre</div>
+                <div id="time" class="stat-value">60</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-label" id="labelR">Kelime</div>
+                <div id="cw" class="stat-value">0</div>
             </div>
         </div>
 
-        <div class="stats center">
-            <div class="stat-block if">
-                <div id="timeName" class="stat-name yellow">Süre</div>
-                <div id="time" class="details">60</div>
-            </div>
-            <div class="stat-block if">
-                <div id="cwName" class="stat-name yellow">Doğru Kelime</div>
-                <div id="cw" class="details">0</div>
-            </div>
+        <div class="text-window">
+            <div id="textDisplay">Yükleniyor...</div>
         </div>
 
-        <div class="text-display" id="textDisplay">Yükleniyor...</div>
-
-        <div class="input-area center">
-            <textarea rows="1" class="text-input" id="textInput" autofocus autocomplete="off"
-                placeholder="Yazmaya başlayın..."></textarea>
+        <div class="input-wrapper" style="text-align: center;">
+            <input type="text" id="textInput" autofocus autocomplete="off" placeholder="yazmaya başlayın...">
         </div>
 
-        <div class="restart-button center mt-4">
-            <a id="restartBtn" class="current" href="#" style="font-size: 2rem; padding: 10px 20px;">
-                <i class="fas fa-redo"></i>
-            </a>
-        </div>
+        <button id="restartBtn" class="btn-restart">
+            <i class="fas fa-redo-alt"></i> Yeniden Başlat
+        </button>
+    </main>
 
-        <footer class="center">©2025 Türkçe Yazma Testi</footer>
-    </div>
+    <footer>&copy; 2025 AYŞE SUDE ÖZDEN. TÜM HAKLARI SAKLIDIR.</footer>
 
     <script>
-        // TÜRKÇE KELİME LİSTELERİ
-        const turkishWords = {
-            beginner: ["ev", "su", "ay", "yol", "al", "bak", "gel", "oku", "yaz", "git", "çay", "kar", "gül", "son", "dağ", "gök", "ada", "efe", "ata", "iyi", "çok", "her", "ve", "ile", "bir", "ana", "ara", "buz", "can", "dış", "eli", "fal", "geç", "haz", "ısı", "jet", "kız", "laz", "maç", "nar", "oda", "pay", "ray", "saç", "taş", "uçak", "ütü", "var", "yaş", "zil"],
-            pro: ["bilgisayar", "cumhuriyet", "gelecek", "öğrenci", "teknoloji", "kütüphane", "merhaba", "teşekkür", "gökyüzü", "arkadaş", "istanbul", "türkiye", "programlama", "heyecan", "yetenek", "deneyim", "yolculuk", "kelime", "farklılık", "gelişim", "manzara", "bağımsızlık", "özgürlük", "adalet", "paylaşım", "karakter", "laboratuvar", "psikoloji", "sosyoloji", "matematik", "edebiyat", "felsefe", "coğrafya", "biyoloji", "astronomi", "yeryüzü", "mükemmel", "başarı", "zorluk", "sabır"]
-        };
+        const trWordsBeg = ["elma", "masa", "kedi", "su", "yol", "kitap", "kalem", "deniz", "güneş", "ayna", "ev", "okul", "kapı", "çay", "kahve", "bulut", "ağaç", "kuş", "çiçek", "şehir", "gece", "sabah", "insan", "zaman", "hayat", "ışık", "rüzgar", "mavi", "yeşil", "beyaz", "siyah", "çocuk", "anne", "baba", "arkadaş", "sevgi", "yemek", "uyku", "spor", "yazı"];
+
+        const trWordsPro = ["bilgisayar", "kütüphane", "öğretmen", "gelecek", "tecrübe", "özgürlük", "heyecan", "gökyüzü", "arkadaşlık", "merhamet", "başarı", "yetenek", "programlama", "teknoloji", "cumhuriyet", "istatistik", "psikoloji", "felsefe", "edebiyat", "araştırma", "bağımsızlık", "sorumluluk", "gelişim", "medeniyet", "kararlılık", "hayalperest", "yaratıcılık", "mücadele", "dayanışma", "farkındalık"];
 
         const testItem = document.getElementById("textDisplay");
         const inputItem = document.getElementById("textInput");
-        const timeName = document.getElementById("timeName");
-        const time = document.getElementById("time");
-        const cwName = document.getElementById("cwName");
-        const cw = document.getElementById("cw");
+        const timeVal = document.getElementById("time");
+        const cwVal = document.getElementById("cw");
         const restartBtn = document.getElementById("restartBtn");
-        const thirty = document.getElementById("thirty");
-        const sixty = document.getElementById("sixty");
-        const beg = document.getElementById("beg");
-        const pro = document.getElementById("pro");
 
         let wordNo = 1;
-        let wordsSubmitted = 0;
         let wordsCorrect = 0;
+        let wordsSubmitted = 0;
         let timer = 60;
         let flag = 0;
         let seconds;
-        let difficulty = 'beginner'; // 'beginner' veya 'pro'
+        let difficulty = 1;
 
-        function displayTest() {
+        function loadWords(diff) {
             wordNo = 1;
+            testItem.style.transform = "translateY(0px)";
             testItem.innerHTML = '';
-            testItem.scrollTop = 0;
 
-            // Listeyi karıştır ve 50 kelime seç
-            let sourceList = turkishWords[difficulty];
-            let shuffled = sourceList.sort(() => 0.5 - Math.random());
-            let selectedWords = Array(50).fill().map(() => shuffled[Math.floor(Math.random() * shuffled.length)]);
+            // Havuzdan rastgele 100 kelime seç
+            const pool = (diff === 1) ? trWordsBeg : trWordsPro;
+            const words = [];
+            for (let i = 0; i < 100; i++) {
+                words.push(pool[Math.floor(Math.random() * pool.length)]);
+            }
 
-            selectedWords.forEach(function (word, i) {
-                let wordSpan = document.createElement('span');
-                wordSpan.innerText = word;
-                wordSpan.setAttribute("id", "word-" + (i + 1));
-                testItem.appendChild(wordSpan);
+            words.forEach((w, i) => {
+                let span = document.createElement('span');
+                span.innerText = w;
+                span.id = `word-${i + 1}`;
+                testItem.appendChild(span);
             });
-
+            colorSpan("word-1", "current");
             inputItem.disabled = false;
             inputItem.focus();
-            colorSpan("word-1", 2);
         }
 
-        displayTest();
+        function colorSpan(id, className) {
+            const el = document.getElementById(id);
+            if (el) el.className = className;
+        }
 
-        inputItem.addEventListener('input', function (e) {
-            if (flag === 0) {
-                flag = 1;
-                timeStart();
-            }
-            if (inputItem.value.endsWith(" ")) {
-                checkWord();
-            } else {
-                currentWord();
-            }
-        });
+        function handleInput() {
+            if (flag === 0) { flag = 1; startTimer(); }
 
-        function checkWord() {
-            const wordEntered = inputItem.value.trim();
-            if (wordEntered === "") { inputItem.value = ''; return; }
+            const typed = inputItem.value;
+            if (typed.endsWith(" ")) {
+                const wordEntered = typed.trim();
+                const currentSpan = document.getElementById(`word-${wordNo}`);
 
-            const wordID = "word-" + wordNo;
-            const checkSpan = document.getElementById(wordID);
-            if (!checkSpan) return;
-
-            wordsSubmitted++;
-            if (checkSpan.innerText.trim() === wordEntered) {
-                colorSpan(wordID, 1);
-                wordsCorrect++;
-                cw.innerText = wordsCorrect;
-            } else {
-                colorSpan(wordID, 3);
-            }
-
-            wordNo++;
-            inputItem.value = '';
-
-            const nextID = "word-" + wordNo;
-            const nextSpan = document.getElementById(nextID);
-
-            if (nextSpan) {
-                colorSpan(nextID, 2);
-                if (nextSpan.offsetTop > (testItem.scrollTop + 45)) {
-                    testItem.scrollTop += 45;
+                wordsSubmitted++;
+                if (wordEntered === currentSpan.innerText) {
+                    wordsCorrect++;
+                    colorSpan(`word-${wordNo}`, "correct");
+                } else {
+                    colorSpan(`word-${wordNo}`, "wrong");
                 }
-            } else {
-                displayTest();
+
+                cwVal.innerText = wordsCorrect;
+                wordNo++;
+                inputItem.value = "";
+
+                const nextSpan = document.getElementById(`word-${wordNo}`);
+                if (nextSpan) {
+                    colorSpan(`word-${wordNo}`, "current");
+                    if (nextSpan.offsetTop > 30) {
+                        testItem.style.transform = `translateY(-${nextSpan.offsetTop - 5}px)`;
+                    }
+                } else { loadWords(difficulty); }
             }
         }
 
-        function currentWord() {
-            const wordEntered = inputItem.value.trim();
-            const currentID = "word-" + wordNo;
-            const currentSpan = document.getElementById(currentID);
-            if (!currentSpan) return;
-
-            if (currentSpan.innerText.trim().startsWith(wordEntered)) {
-                colorSpan(currentID, 2);
-            } else {
-                colorSpan(currentID, 3);
-            }
-        }
-
-        function colorSpan(id, colorType) {
-            const span = document.getElementById(id);
-            if (!span) return;
-            span.classList.remove('correct', 'wrong', 'current');
-            if (colorType === 1) span.classList.add('correct');
-            else if (colorType === 2) span.classList.add('current');
-            else span.classList.add('wrong');
-        }
-
-        thirty.addEventListener("click", function (e) { e.preventDefault(); timer = 60; limitColor(thirty, sixty); resetGame(); });
-        sixty.addEventListener("click", function (e) { e.preventDefault(); timer = 120; limitColor(sixty, thirty); resetGame(); });
-        beg.addEventListener("click", function (e) { e.preventDefault(); difficulty = 'beginner'; limitColor(beg, pro); resetGame(); });
-        pro.addEventListener("click", function (e) { e.preventDefault(); difficulty = 'pro'; limitColor(pro, beg); resetGame(); });
-
-        function limitColor(itema, itemr) { itema.classList.add('yellow'); itemr.classList.remove('yellow'); }
-
-        function resetGame() {
-            clearInterval(seconds);
-            wordsSubmitted = 0; wordsCorrect = 0; flag = 0;
-            time.classList.remove("current"); cw.classList.remove("current");
-            time.innerText = timer; timeName.innerText = "Süre";
-            cw.innerText = "0"; cwName.innerText = "Doğru Kelime";
-            inputItem.disabled = false; inputItem.value = '';
-            displayTest();
-            limitVisible();
-        }
-
-        restartBtn.addEventListener("click", function (e) { e.preventDefault(); resetGame(); });
-
-        function timeStart() {
-            limitInvisible();
-            seconds = setInterval(function () {
-                let current = parseInt(time.innerText);
-                current--;
-                time.innerText = current;
-                if (current <= 0) {
-                    clearInterval(seconds);
-                    timeOver();
-                }
+        function startTimer() {
+            seconds = setInterval(() => {
+                let c = parseInt(timeVal.innerText);
+                c--;
+                timeVal.innerText = c;
+                if (c <= 0) { clearInterval(seconds); endMatch(); }
             }, 1000);
         }
 
-        function timeOver() {
+        function endMatch() {
             inputItem.disabled = true;
-            let percentageAcc = wordsSubmitted === 0 ? 0 : Math.floor((wordsCorrect / wordsSubmitted) * 100);
-            let wpm = Math.floor(wordsCorrect / (timer / 60));
-            time.innerText = percentageAcc + "%";
-            timeName.innerText = "Doğruluk Oranı"; // Doğruluk Oranı
-            cw.innerText = wpm;
-            cwName.innerText = "Dakikadaki Kelime Sayısı"; // Dakikadaki Kelime Sayısı
-            time.classList.add("current");
-            cw.classList.add("current");
-            restartBtn.focus();
+            const wpm = Math.floor(wordsCorrect / (timer / 60));
+            const acc = wordsSubmitted === 0 ? 0 : Math.floor((wordsCorrect / wordsSubmitted) * 100);
+
+            document.getElementById("labelL").innerText = "DOĞRULUK";
+            timeVal.innerText = "%" + acc;
+            document.getElementById("labelR").innerText = "DKS (WPM)";
+            cwVal.innerText = wpm;
         }
 
-        function limitVisible() { [thirty, sixty, beg, pro].forEach(el => el.style.visibility = 'visible'); }
-        function limitInvisible() { [thirty, sixty, beg, pro].forEach(el => el.style.visibility = 'hidden'); }
+        function reset() {
+            clearInterval(seconds);
+            flag = 0; wordsCorrect = 0; wordsSubmitted = 0;
+            timeVal.innerText = timer; cwVal.innerText = "0";
+            document.getElementById("labelL").innerText = "SÜRE";
+            document.getElementById("labelR").innerText = "KELİME";
+            inputItem.value = "";
+            loadWords(difficulty);
+        }
+
+        inputItem.addEventListener('input', handleInput);
+        restartBtn.addEventListener('click', reset);
+
+        document.getElementById("sixty").onclick = (e) => { e.preventDefault(); timer = 60; reset(); e.target.className = "active"; document.getElementById("onetwenty").className = ""; };
+        document.getElementById("onetwenty").onclick = (e) => { e.preventDefault(); timer = 120; reset(); e.target.className = "active"; document.getElementById("sixty").className = ""; };
+        document.getElementById("beg").onclick = (e) => { e.preventDefault(); difficulty = 1; reset(); e.target.className = "active"; document.getElementById("pro").className = ""; };
+        document.getElementById("pro").onclick = (e) => { e.preventDefault(); difficulty = 2; reset(); e.target.className = "active"; document.getElementById("beg").className = ""; };
+
+        loadWords(difficulty);
     </script>
 </body>
 
