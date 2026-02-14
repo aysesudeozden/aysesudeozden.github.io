@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Yazma Hızı Testi | Ayşe Sude Özden</title>
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/512/6655/6655473.png" type="image/x-icon" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+
+    <style>
+        :root {
+            --maroon: #250604;
+            --cream: #f3efe0;
+            --accent-soft: rgba(243, 239, 224, 0.1);
+            --correct-green: #8da98d;
+            --wrong-red: #a98d8d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--maroon);
+            color: var(--cream);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .header-nav {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(243, 239, 224, 0.1);
+        }
+
+        .brand-link {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--cream);
+            letter-spacing: 2px;
+        }
+
+        .settings-box {
+            display: flex;
+            gap: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-items: center;
+        }
+
+        .settings-box a {
+            color: var(--cream);
+            opacity: 0.4;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .settings-box a.active,
+        .settings-box a:hover {
+            opacity: 1;
+        }
+
+        .lang-switch {
+            padding-right: 15px;
+            border-right: 1px solid rgba(243, 239, 224, 0.2);
+        }
+
+        .game-container {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-block {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        .text-window {
+            background: var(--accent-soft);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #textDisplay {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 25px;
+            font-size: 1.6rem;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #textDisplay span {
+            opacity: 0.3;
+            transition: 0.2s;
+        }
+
+        #textDisplay span.current {
+            opacity: 1;
+            color: var(--cream);
+            border-bottom: 2px solid var(--cream);
+        }
+
+        #textDisplay span.correct {
+            color: var(--correct-green);
+            opacity: 0.8;
+        }
+
+        #textDisplay span.wrong {
+            color: var(--wrong-red);
+            opacity: 0.8;
+            text-decoration: line-through;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        #textInput {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(243, 239, 224, 0.2);
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            outline: none;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+
+        #textInput:focus {
+            border-color: var(--cream);
+        }
+
+        .btn-restart {
+            background: transparent;
+            border: 1px solid rgba(243, 239, 224, 0.3);
+            color: var(--cream);
+            padding: 0.8rem 2rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            align-self: center;
+        }
+
+        .btn-restart:hover {
+            background: var(--cream);
+            color: var(--maroon);
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-nav">
+        <a href="index.html" class="brand-link">A. SUDE ÖZDEN</a>
+        <div class="settings-box">
+            <div class="lang-switch">
+                <a href="game.html">EN</a>
+            </div>
+            <div class="timer-select">
+                <a id="sixty" class="active" href="#">60SN</a> | <a id="onetwenty" href="#">120SN</a>
+            </div>
+            <div class="diff-select">
+                <a id="beg" class="active" href="#">BAŞLANGIÇ</a> | <a id="pro" href="#">İLERİ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="game-container">
+        <div class="stats-wrapper">
+            <div class="stat-block">
+                <div class="stat-label" id="labelL">Süre</div>
+                <div id="time" class="stat-value">60</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-label" id="labelR">Kelime</div>
+                <div id="cw" class="stat-value">0</div>
+            </div>
+        </div>
+
+        <div class="text-window">
+            <div id="textDisplay">Yükleniyor...</div>
+        </div>
+
+        <div class="input-wrapper" style="text-align: center;">
+            <input type="text" id="textInput" autofocus autocomplete="off" placeholder="yazmaya başlayın...">
+        </div>
+
+        <button id="restartBtn" class="btn-restart">
+            <i class="fas fa-redo-alt"></i> Yeniden Başlat
+        </button>
+    </main>
+
+    <footer>&copy; 2025 AYŞE SUDE ÖZDEN. TÜM HAKLARI SAKLIDIR.</footer>
+
+    <script>
+        const trWordsBeg = ["elma", "masa", "kedi", "su", "yol", "kitap", "kalem", "deniz", "güneş", "ayna", "ev", "okul", "kapı", "çay", "kahve", "bulut", "ağaç", "kuş", "çiçek", "şehir", "gece", "sabah", "insan", "zaman", "hayat", "ışık", "rüzgar", "mavi", "yeşil", "beyaz", "siyah", "çocuk", "anne", "baba", "arkadaş", "sevgi", "yemek", "uyku", "spor", "yazı"];
+
+        const trWordsPro = ["bilgisayar", "kütüphane", "öğretmen", "gelecek", "tecrübe", "özgürlük", "heyecan", "gökyüzü", "arkadaşlık", "merhamet", "başarı", "yetenek", "programlama", "teknoloji", "cumhuriyet", "istatistik", "psikoloji", "felsefe", "edebiyat", "araştırma", "bağımsızlık", "sorumluluk", "gelişim", "medeniyet", "kararlılık", "hayalperest", "yaratıcılık", "mücadele", "dayanışma", "farkındalık"];
+
+        const testItem = document.getElementById("textDisplay");
+        const inputItem = document.getElementById("textInput");
+        const timeVal = document.getElementById("time");
+        const cwVal = document.getElementById("cw");
+        const restartBtn = document.getElementById("restartBtn");
+
+        let wordNo = 1;
+        let wordsCorrect = 0;
+        let wordsSubmitted = 0;
+        let timer = 60;
+        let flag = 0;
+        let seconds;
+        let difficulty = 1;
+
+        function loadWords(diff) {
+            wordNo = 1;
+            testItem.style.transform = "translateY(0px)";
+            testItem.innerHTML = '';
+
+            // Havuzdan rastgele 100 kelime seç
+            const pool = (diff === 1) ? trWordsBeg : trWordsPro;
+            const words = [];
+            for (let i = 0; i < 100; i++) {
+                words.push(pool[Math.floor(Math.random() * pool.length)]);
+            }
+
+            words.forEach((w, i) => {
+                let span = document.createElement('span');
+                span.innerText = w;
+                span.id = `word-${i + 1}`;
+                testItem.appendChild(span);
+            });
+            colorSpan("word-1", "current");
+            inputItem.disabled = false;
+            inputItem.focus();
+        }
+
+        function colorSpan(id, className) {
+            const el = document.getElementById(id);
+            if (el) el.className = className;
+        }
+
+        function handleInput() {
+            if (flag === 0) { flag = 1; startTimer(); }
+
+            const typed = inputItem.value;
+            if (typed.endsWith(" ")) {
+                const wordEntered = typed.trim();
+                const currentSpan = document.getElementById(`word-${wordNo}`);
+
+                wordsSubmitted++;
+                if (wordEntered === currentSpan.innerText) {
+                    wordsCorrect++;
+                    colorSpan(`word-${wordNo}`, "correct");
+                } else {
+                    colorSpan(`word-${wordNo}`, "wrong");
+                }
+
+                cwVal.innerText = wordsCorrect;
+                wordNo++;
+                inputItem.value = "";
+
+                const nextSpan = document.getElementById(`word-${wordNo}`);
+                if (nextSpan) {
+                    colorSpan(`word-${wordNo}`, "current");
+                    if (nextSpan.offsetTop > 30) {
+                        testItem.style.transform = `translateY(-${nextSpan.offsetTop - 5}px)`;
+                    }
+                } else { loadWords(difficulty); }
+            }
+        }
+
+        function startTimer() {
+            seconds = setInterval(() => {
+                let c = parseInt(timeVal.innerText);
+                c--;
+                timeVal.innerText = c;
+                if (c <= 0) { clearInterval(seconds); endMatch(); }
+            }, 1000);
+        }
+
+        function endMatch() {
+            inputItem.disabled = true;
+            const wpm = Math.floor(wordsCorrect / (timer / 60));
+            const acc = wordsSubmitted === 0 ? 0 : Math.floor((wordsCorrect / wordsSubmitted) * 100);
+
+            document.getElementById("labelL").innerText = "DOĞRULUK";
+            timeVal.innerText = "%" + acc;
+            document.getElementById("labelR").innerText = "DKS (WPM)";
+            cwVal.innerText = wpm;
+        }
+
+        function reset() {
+            clearInterval(seconds);
+            flag = 0; wordsCorrect = 0; wordsSubmitted = 0;
+            timeVal.innerText = timer; cwVal.innerText = "0";
+            document.getElementById("labelL").innerText = "SÜRE";
+            document.getElementById("labelR").innerText = "KELİME";
+            inputItem.value = "";
+            loadWords(difficulty);
+        }
+
+        inputItem.addEventListener('input', handleInput);
+        restartBtn.addEventListener('click', reset);
+
+        document.getElementById("sixty").onclick = (e) => { e.preventDefault(); timer = 60; reset(); e.target.className = "active"; document.getElementById("onetwenty").className = ""; };
+        document.getElementById("onetwenty").onclick = (e) => { e.preventDefault(); timer = 120; reset(); e.target.className = "active"; document.getElementById("sixty").className = ""; };
+        document.getElementById("beg").onclick = (e) => { e.preventDefault(); difficulty = 1; reset(); e.target.className = "active"; document.getElementById("pro").className = ""; };
+        document.getElementById("pro").onclick = (e) => { e.preventDefault(); difficulty = 2; reset(); e.target.className = "active"; document.getElementById("beg").className = ""; };
+
+        loadWords(difficulty);
+    </script>
+</body>
+
+</html>
+
