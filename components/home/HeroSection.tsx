@@ -7,8 +7,9 @@ type HeroProps = {
     title: string;
     description: string;
     buttonText: string;
-    videoSrc: string;
+    videoSrc?: string;
     darkVideoSrc?: string;
+    imageSrc?: string;
     buttonLink: string;
 };
 
@@ -16,22 +17,35 @@ const HeroSection = ({
     subtitle = "SCARLET<br />MAROON",
     description = "Yazılım dünyasına yeni adım atmış bir bilgisayar mühendisiyim. Her gün yeni bir teknoloji öğreniyor ve GitHub üzerinde açık kaynaklı projeler geliştiriyorum.",
     buttonText = "DAHA FAZLA",
-    videoSrc = "/assets/1131.mp4",
-    darkVideoSrc = "/assets/1130.mp4",
+    videoSrc,
+    darkVideoSrc,
+    imageSrc,
     buttonLink = "#about"
 }: HeroProps) => {
-    const [currentVideoSrc, setCurrentVideoSrc] = useState(videoSrc);
+    // Default video sources if neither video nor image is provided
+    const defaultVideoSrc = "/assets/1131.mp4";
+    const defaultDarkVideoSrc = "/assets/1130.mp4";
+
+    // Determine effective sources
+    const effectiveVideoSrc = videoSrc || defaultVideoSrc;
+    const effectiveDarkVideoSrc = darkVideoSrc || defaultDarkVideoSrc;
+
+    const [currentVideoSrc, setCurrentVideoSrc] = useState(effectiveVideoSrc);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
+
+        // Only run theme logic if we are using video logic (i.e., no imageSrc provided)
+        if (imageSrc) return;
+
         const updateTheme = () => {
             const isDarkBody = document.body.classList.contains('dark');
             const isDarkHtml = document.documentElement.classList.contains('dark');
             const isDark = isDarkBody || isDarkHtml;
 
             console.log('HeroSection: Theme update detected. isDark:', isDark);
-            setCurrentVideoSrc(isDark ? darkVideoSrc : videoSrc);
+            setCurrentVideoSrc(isDark ? effectiveDarkVideoSrc : effectiveVideoSrc);
         };
 
         // Initial check
@@ -55,11 +69,7 @@ const HeroSection = ({
             observer.disconnect();
             window.removeEventListener('theme-change', updateTheme);
         };
-    }, [videoSrc, darkVideoSrc]);
-
-    // Avoid hydration mismatch by rendering default (likely light) initially or handling differently
-    // Actually, since theme is applied in useEffect, initial render is light, then switches.
-    // We can use the currentVideoSrc directly.
+    }, [effectiveVideoSrc, effectiveDarkVideoSrc, imageSrc]);
 
     return (
         <section className="section-split hero-section">
@@ -85,16 +95,25 @@ const HeroSection = ({
                 </div>
             </div>
             <div className="col-right hero-right">
-                <video
-                    key={currentVideoSrc} // Force re-render on source change to ensure autoplay
-                    src={currentVideoSrc}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="hero-video"
-                    style={{ objectPosition: 'center' }}
-                />
+                {imageSrc ? (
+                    <img
+                        src={imageSrc}
+                        alt="Hero"
+                        className="hero-video" // Reuse class for styling
+                        style={{ objectPosition: 'center', width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                ) : (
+                    <video
+                        key={currentVideoSrc} // Force re-render on source change to ensure autoplay
+                        src={currentVideoSrc}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="hero-video"
+                        style={{ objectPosition: 'center' }}
+                    />
+                )}
             </div>
         </section>
     );
