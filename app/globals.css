@@ -1,5 +1,6 @@
 :root {
-  --maroon: #250604;
+  --maroon: #3e0c0d;
+  /* Slightly lighter/redder maroon from image */
   --cream: #f3efe0;
   --text-dark: #2a0505;
   --text-light: #f3efe0;
@@ -23,6 +24,10 @@ body.dark {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -618,6 +623,70 @@ textarea:focus {
   color: green;
 }
 
-.status-error {
-  color: red;
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animate-fade-up {
+  animation-name: fadeInUp;
+}
+
+.animate-scale {
+  animation-name: fadeInScale;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.project-card-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.project-card-wrapper:hover {
+  transform: translateY(-10px);
 }

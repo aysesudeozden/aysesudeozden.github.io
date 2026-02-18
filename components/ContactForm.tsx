@@ -22,6 +22,8 @@ type ContactFormProps = {
     };
 };
 
+import FadeIn from './FadeIn';
+
 export default function ContactForm({ labels }: ContactFormProps) {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
@@ -48,46 +50,54 @@ export default function ContactForm({ labels }: ContactFormProps) {
     return (
         <section className="section-split">
             <div className="col-left contact-left">
-                <h2 className="contact-subtitle">{labels.subtitle}</h2>
-                <h1 className="contact-title" dangerouslySetInnerHTML={{ __html: labels.title }}></h1>
-                <p style={{ opacity: 0.9, maxWidth: '400px', marginBottom: '2rem' }}>
-                    {labels.desc}
-                </p>
+                <FadeIn delay={200}>
+                    <h2 className="contact-subtitle">{labels.subtitle}</h2>
+                </FadeIn>
+                <FadeIn delay={400}>
+                    <h1 className="contact-title" dangerouslySetInnerHTML={{ __html: labels.title }}></h1>
+                </FadeIn>
+                <FadeIn delay={600}>
+                    <p style={{ opacity: 0.9, maxWidth: '400px', marginBottom: '2rem' }}>
+                        {labels.desc}
+                    </p>
+                </FadeIn>
 
-                <div className="contact-links">
+                <FadeIn delay={800} className="contact-links">
                     <a href="mailto:aysesudeozden@gmail.com" className="contact-link-item">aysesudeozden@gmail.com</a>
                     <a href="https://github.com/aysesudeozden" target="_blank" className="contact-link-item">GitHub</a>
                     <a href="https://www.linkedin.com/in/aysesudeozden/" target="_blank" className="contact-link-item">LinkedIn</a>
                     <a href="https://www.instagram.com/aysesudeozden/" target="_blank" className="contact-link-item">Instagram</a>
-                </div>
+                </FadeIn>
             </div>
 
             <div className="col-right contact-right">
-                <form onSubmit={handleSubmit} name="contact-form">
-                    <div className="form-group">
-                        <label htmlFor="name">{labels.nameLabel}</label>
-                        <input type="text" id="name" name="name" required placeholder={labels.namePlaceholder} />
-                    </div>
+                <FadeIn delay={600} animationName="animate-scale">
+                    <form onSubmit={handleSubmit} name="contact-form">
+                        <div className="form-group">
+                            <label htmlFor="name">{labels.nameLabel}</label>
+                            <input type="text" id="name" name="name" required placeholder={labels.namePlaceholder} />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">{labels.emailLabel}</label>
-                        <input type="email" id="email" name="email" required placeholder={labels.emailPlaceholder} />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="email">{labels.emailLabel}</label>
+                            <input type="email" id="email" name="email" required placeholder={labels.emailPlaceholder} />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="message">{labels.messageLabel}</label>
-                        <textarea id="message" name="message" rows={4} required placeholder={labels.messagePlaceholder}></textarea>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="message">{labels.messageLabel}</label>
+                            <textarea id="message" name="message" rows={4} required placeholder={labels.messagePlaceholder}></textarea>
+                        </div>
 
-                    <button type="submit" className="btn-submit" disabled={status === 'sending'}>
-                        {status === 'sending' ? labels.sending :
-                            status === 'success' ? labels.sent :
-                                status === 'error' ? labels.retry : labels.submitButton}
-                    </button>
+                        <button type="submit" className="btn-submit" disabled={status === 'sending'}>
+                            {status === 'sending' ? labels.sending :
+                                status === 'success' ? labels.sent :
+                                    status === 'error' ? labels.retry : labels.submitButton}
+                        </button>
 
-                    {status === 'success' && <p id="status-message" className="status-success" style={{ display: 'block' }}>{labels.successMsg}</p>}
-                    {status === 'error' && <p id="status-message" className="status-error" style={{ display: 'block' }}>{labels.errorMsg}</p>}
-                </form>
+                        {status === 'success' && <p id="status-message" className="status-success" style={{ display: 'block' }}>{labels.successMsg}</p>}
+                        {status === 'error' && <p id="status-message" className="status-error" style={{ display: 'block' }}>{labels.errorMsg}</p>}
+                    </form>
+                </FadeIn>
             </div>
         </section>
     );

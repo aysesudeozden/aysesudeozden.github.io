@@ -1,56 +1,59 @@
-'use client';
 
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
+import HeroSection from '@/components/home/HeroSection';
+import HeartSection from '@/components/home/HeartSection';
+import InspiredBySection from '@/components/home/InspiredBySection';
+import TravelDatesSection from '@/components/home/TravelDatesSection';
+import FooterSection from '@/components/home/FooterSection';
 
 export default function EnglishHome() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        const updateVideoSource = () => {
-            if (videoRef.current) {
-                const isDark = document.body.classList.contains('dark');
-                const newSrc = isDark ? '/assets/1130.mp4' : '/assets/1131.mp4';
-                if (!videoRef.current.src.includes(newSrc)) {
-                    videoRef.current.src = newSrc;
-                    videoRef.current.load();
-                    videoRef.current.play().catch(e => console.log("Autoplay failed", e));
-                }
-            }
-        };
-        updateVideoSource();
-        window.addEventListener('theme-change', updateVideoSource);
-        return () => window.removeEventListener('theme-change', updateVideoSource);
-    }, []);
-
     return (
-        <header className="section-split hero-section">
-            <div className="col-left hero-left">
-                <div className="hero-content">
-                    <h2 className="hero-subtitle">COMPUTER ENGINEER</h2>
-                    <h1 className="hero-title">AYŞE SUDE<br />ÖZDEN</h1>
-                    <p className="mini-bio">
-                        Hello! I work on web design, HTML, SQL and Unity.
-                        I compile what I have learnt and the projects I have developed here.
-                    </p>
-                    <Link href="/projects" className="btn-outline">VIEW MY PROJECTS</Link>
-                </div>
-            </div>
-
-            <div className="col-right hero-right">
-                <video
-                    ref={videoRef}
-                    id="heroVideo"
-                    className="hero-image"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                >
-                    <source src="/assets/1131.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </header>
+        <main>
+            <HeroSection
+                subtitle="SCARLET<br/>MAROON"
+                title="THE ARTIST"
+                description="I am a computer engineer who recently stepped into the software world. I learn a new technology every day and develop open source projects on GitHub."
+                buttonText="READ MORE"
+                imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                buttonLink="#about"
+            />
+            <HeartSection
+                subtitle="WHY I DO THIS"
+                title="THE HEART BEHIND<br/>SCARLET STUDIO"
+                description="Recently, I have focused on web technologies and game development (Unity). Writing code is not just a job for me, it is also a creative process. Solving complex problems and creating aesthetic, functional interfaces is my greatest passion."
+            />
+            <InspiredBySection />
+            <TravelDatesSection
+                title="PROJECTS"
+                items={[
+                    {
+                        title: "GITHUB / OPEN SOURCE",
+                        desc: "CODE & CONTRIBUTIONS",
+                        linkText: "VIEW PROFILE",
+                        linkUrl: "https://github.com/aysesudeozden",
+                        image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                    },
+                    {
+                        title: "WEB DESIGN",
+                        desc: "HTML, CSS & NEXT.JS",
+                        linkText: "VIEW PROJECTS",
+                        linkUrl: "/projects",
+                        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                    },
+                    {
+                        title: "GAME DEV",
+                        desc: "UNITY 3D & C#",
+                        linkText: "PLAY NOW",
+                        linkUrl: "/game",
+                        image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                    }
+                ]}
+            />
+            <FooterSection
+                title="LET'S TELL YOUR STORY"
+                buttonText="INQUIRE"
+                location="Based in Istanbul, TR"
+                copyright="© 2024 Ayşe Sude Özden"
+            />
+        </main>
     );
 }

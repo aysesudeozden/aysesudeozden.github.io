@@ -1,7 +1,7 @@
 'use client';
-import FadeIn from "@/components/FadeIn";
+import FadeIn from '@/components/FadeIn';
 
-export default function Projeler() {
+export default function Projects() {
     return (
         <section className="section-split hero-section">
             <div className="projects-container" style={{ width: '100%' }}>
@@ -9,33 +9,33 @@ export default function Projeler() {
                     <h2 className="hero-subtitle" style={{ color: 'var(--accent-text)' }}>PORTFOLIO</h2>
                 </FadeIn>
                 <FadeIn delay={400}>
-                    <h1 className="hero-title" style={{ marginBottom: '1rem' }}>SEÇİLMİŞ PROJELER</h1>
+                    <h1 className="hero-title" style={{ marginBottom: '1rem' }}>SELECTED PROJECTS</h1>
+                    <div style={{ width: '50px', height: '1px', background: 'currentColor', margin: '0 auto' }}></div>
                 </FadeIn>
-                <div style={{ width: '50px', height: '1px', background: 'currentColor', margin: '0 auto' }}></div>
 
                 <div className="project-grid">
-                    <FadeIn delay={600}>
+                    <FadeIn delay={600} className="project-card-wrapper" style={{ flex: '1 1 300px' }}>
                         <div
                             className="project-card"
                             onClick={() => window.open('https://github.com/aysesudeozden', '_blank')}
                             style={{ cursor: 'pointer' }}
                         >
-                            <h3>GitHub Projeleri</h3>
-                            <p>Açık kaynak kodlu çalışmalarım ve denemelerim.</p>
+                            <h3>GitHub Projects</h3>
+                            <p>My open source work and experiments.</p>
                         </div>
                     </FadeIn>
 
                     <FadeIn delay={800} className="project-card-wrapper" style={{ flex: '1 1 300px' }}>
                         <div className="project-card">
-                            <h3>Web Tasarım</h3>
-                            <p>HTML & CSS ile geliştirdiğim arayüz çalışmaları.</p>
+                            <h3>Web Design</h3>
+                            <p>Interface works developed with HTML & CSS.</p>
                         </div>
                     </FadeIn>
 
                     <FadeIn delay={1000} className="project-card-wrapper" style={{ flex: '1 1 300px' }}>
                         <div className="project-card">
-                            <h3>Unity Oyunları</h3>
-                            <p>C# ile geliştirdiğim oyun prototipleri.</p>
+                            <h3>Unity Games</h3>
+                            <p>Game prototypes developed with C#.</p>
                         </div>
                     </FadeIn>
                 </div>
