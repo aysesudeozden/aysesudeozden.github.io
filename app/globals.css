@@ -5,29 +5,29 @@
 @tailwind utilities;
 
 :root {
-  /* Koyu Mod (Dark Mode) - "Zinc" tabanı, temiz ve profesyonel siyah/gri */
-  --theme-bg: #09090b;
-  --theme-surface: #18181b;
-  --theme-border: #27272a;
-  --theme-text: #fafafa;
-  --theme-text-muted: #a1a1aa;
+  /* Koyu Mod (Dark Mode) - Orman & Toprak (Forest & Clay) */
+  --theme-bg: #111a0b; 
+  --theme-surface: #283618;
+  --theme-border: #606c38;
+  --theme-text: #edd3c4; 
+  --theme-text-muted: #606c38;
   
-  /* Kırmızı Vurgu - Taze, canlı ve iç açıcı */
-  --theme-accent: #e11d48; /* Rose Red / Crimson */
-  --theme-accent-hover: #f43f5e;
+  /* Aksan ve Vurgu */
+  --theme-accent: #b23423;
+  --theme-accent-hover: #6f1a07;
 }
 
 .light {
-  /* Açık Mod (Light Mode) - Ferah beyaz ve net kontrast */
-  --theme-bg: #ffffff;
-  --theme-surface: #f4f4f5;
-  --theme-border: #e4e4e7;
-  --theme-text: #09090b;
-  --theme-text-muted: #71717a;
+  /* Açık Mod (Light Mode) - Doğal Şeftali & Orman */
+  --theme-bg: #f5e4da; /* Daha açık, kremsi şeftali */
+  --theme-surface: #edd3c4; /* Sizin verdiğiniz şeftali tonu yüzeyler için */
+  --theme-border: #606c38;
+  --theme-text: #283618;
+  --theme-text-muted: #6f1a07;
   
-  /* Kırmızı Vurgu - Beyaz üzerinde okunaklı belirgin kırmızı */
-  --theme-accent: #e11d48;
-  --theme-accent-hover: #be123c;
+  /* Aksan ve Vurgu */
+  --theme-accent: #b23423;
+  --theme-accent-hover: #6f1a07;
 }
 
 * {

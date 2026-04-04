@@ -56,7 +56,7 @@ export default function CanvasAvatar() {
       const pixels = tempCtx.getImageData(0, 0, drawWidth, drawHeight).data;
 
       particles = [];
-      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-accent').trim() || "#e11d48";
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-accent').trim() || "#b23423";
 
       for (let y = 0; y < drawHeight; y += gap) {
         for (let x = 0; x < drawWidth; x += gap) {

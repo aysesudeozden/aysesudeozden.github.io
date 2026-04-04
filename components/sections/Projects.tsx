@@ -32,7 +32,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div key={index} className="flex justify-center h-full">
               <PixelCard 
-                colors="#e11d48,#fb7185,#9f1239" 
+                colors="#606c38,#b23423,#283618" 
                 gap={12} 
                 speed={40} 
                 className="h-[350px] w-full max-w-md"
