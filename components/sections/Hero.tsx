@@ -1,10 +1,13 @@
 "use client";
 
 import DecryptedText from "../DecryptedText";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative w-full px-6">
+    <section className="min-h-screen flex flex-col items-center justify-center relative w-full px-6 pt-16">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(204,17,17,0.08),transparent_50%)] pointer-events-none" />
       
       <div className="z-10 text-center flex flex-col gap-4">
@@ -18,7 +21,7 @@ export default function Hero() {
           />
         </h1>
         <p className="text-theme-text-muted text-lg md:text-xl font-medium tracking-wide">
-          Software Developer <span className="text-theme-accent mx-2">&bull;</span> Creative Thinker
+          {t('hero.subtitle')} <span className="text-theme-accent mx-2">&bull;</span> {t('hero.creative')}
         </p>
       </div>
 

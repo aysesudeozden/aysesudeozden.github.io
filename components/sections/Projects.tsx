@@ -1,25 +1,30 @@
+"use client";
+
 import PixelCard from "../PixelCard";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Projects() {
+  const { t } = useLanguage();
+
   const projects = [
     {
       title: "Proje 1",
-      description: "Modern web teknolojileri kullanılarak geliştirilmiş interaktif platform.",
+      description: t('proj.1.desc'),
       tech: ["Next.js", "React", "TailwindCSS"]
     },
     {
       title: "Proje 2",
-      description: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.",
+      description: t('proj.2.desc'),
       tech: ["TypeScript", "Framer Motion", "CSS"]
     }
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6">
+    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 pt-24">
       <div className="max-w-5xl mx-auto w-full">
         <div className="flex items-center gap-4 mb-16">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
-          <h2 className="text-3xl font-bold tracking-wider text-theme-accent">Projeler</h2>
+          <h2 className="text-3xl font-bold tracking-wider text-theme-accent">{t('proj.title')}</h2>
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
         </div>
 
@@ -34,14 +39,14 @@ export default function Projects() {
             >
               <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                 <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-theme-text-muted mb-4 line-clamp-2">
+                <p className="text-[#a0a0a0] mb-4 line-clamp-2">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map((t, idx) => (
                     <span 
                       key={idx} 
-                      className="px-2 py-1 text-xs font-medium border border-theme-border rounded-md text-theme-text opacity-80"
+                      className="px-2 py-1 text-xs font-medium border border-white/20 rounded-md text-white/90"
                     >
                       {t}
                     </span>
