@@ -13,7 +13,7 @@ export default function Contact() {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-theme-accent opacity-[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-3xl mx-auto w-full text-center z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-theme-text mb-6">
+        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-theme-text mb-6 uppercase">
           {t('contact.title')}
         </h2>
         <p className="text-theme-text-muted text-lg mb-12 max-w-xl mx-auto">

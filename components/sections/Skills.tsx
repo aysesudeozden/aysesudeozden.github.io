@@ -12,13 +12,13 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-20 px-6 pt-24 border-y border-theme-border/20 bg-theme-surface/30 overflow-hidden relative">
-      <div className="max-w-5xl mx-auto w-full mb-12">
-        <div className="flex items-center gap-4 mb-4">
+      <div className="max-w-5xl mx-auto w-full mb-12 text-center px-4">
+        <div className="flex items-center gap-4 mb-6">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
-          <h2 className="text-3xl font-bold tracking-wider text-theme-accent">{t('skills.title')}</h2>
+          <h2 className="text-3xl font-bold tracking-wider text-theme-accent uppercase">{t('skills.title')}</h2>
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
         </div>
-        <p className="text-center text-theme-text-muted">{t('skills.desc')}</p>
+        <p className="text-center text-theme-text-muted text-lg max-w-2xl mx-auto leading-relaxed">{t('skills.desc')}</p>
       </div>
 
       {/* Marquee Mask (fades edges) */}
