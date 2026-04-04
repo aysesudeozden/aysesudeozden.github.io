@@ -24,10 +24,12 @@ export default function Navbar() {
         ASÖ
       </div>
 
-      <nav className="hidden md:flex items-center gap-8 text-theme-text font-medium text-sm">
+      <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-theme-text font-medium text-sm">
         <button onClick={() => handleScroll('about')} className="hover:text-theme-accent transition-colors">{t('nav.about')}</button>
+        <button onClick={() => handleScroll('skills')} className="hover:text-theme-accent transition-colors">{t('nav.skills')}</button>
         <button onClick={() => handleScroll('education')} className="hover:text-theme-accent transition-colors">{t('nav.education')}</button>
         <button onClick={() => handleScroll('projects')} className="hover:text-theme-accent transition-colors">{t('nav.projects')}</button>
+        <button onClick={() => handleScroll('contact')} className="hover:text-theme-accent transition-colors">{t('nav.contact')}</button>
       </nav>
 
       <div className="flex items-center gap-4">

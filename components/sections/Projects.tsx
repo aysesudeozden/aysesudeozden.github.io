@@ -32,7 +32,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <PixelCard 
               key={index} 
-              colors="#cf1111,#520606,#8a0707" 
+              colors="#e11d48,#fb7185,#9f1239" 
               gap={12} 
               speed={40} 
               className="h-[300px]"

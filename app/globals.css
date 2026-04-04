@@ -5,23 +5,29 @@
 @tailwind utilities;
 
 :root {
-  --theme-bg: #050101;
-  --theme-surface: #120303;
-  --theme-border: #3b0a0a;
-  --theme-text: #fdf2f2;
-  --theme-text-muted: #9c6c6c;
-  --theme-accent: #cc1111;
-  --theme-accent-hover: #fa2323;
+  /* Koyu Mod (Dark Mode) - "Zinc" tabanı, temiz ve profesyonel siyah/gri */
+  --theme-bg: #09090b;
+  --theme-surface: #18181b;
+  --theme-border: #27272a;
+  --theme-text: #fafafa;
+  --theme-text-muted: #a1a1aa;
+  
+  /* Kırmızı Vurgu - Taze, canlı ve iç açıcı */
+  --theme-accent: #e11d48; /* Rose Red / Crimson */
+  --theme-accent-hover: #f43f5e;
 }
 
 .light {
-  --theme-bg: #fcfcfc;
-  --theme-surface: #f0f0f0;
-  --theme-border: #e0e0e0;
-  --theme-text: #1a0505;
-  --theme-text-muted: #666666;
-  --theme-accent: #cc1111;
-  --theme-accent-hover: #fa2323;
+  /* Açık Mod (Light Mode) - Ferah beyaz ve net kontrast */
+  --theme-bg: #ffffff;
+  --theme-surface: #f4f4f5;
+  --theme-border: #e4e4e7;
+  --theme-text: #09090b;
+  --theme-text-muted: #71717a;
+  
+  /* Kırmızı Vurgu - Beyaz üzerinde okunaklı belirgin kırmızı */
+  --theme-accent: #e11d48;
+  --theme-accent-hover: #be123c;
 }
 
 * {
