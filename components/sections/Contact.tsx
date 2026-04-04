@@ -8,7 +8,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="min-h-[60vh] flex flex-col items-center justify-center py-20 px-6 pt-24 relative overflow-hidden">
-      
+
       {/* Subtle Background Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-theme-accent opacity-[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -20,12 +20,12 @@ export default function Contact() {
           {t('contact.desc')}
         </p>
 
-        <a 
-          href="mailto:hello@example.com" 
+        <a
+          href="mailto:[EMAIL_ADDRESS]"
           className="inline-flex items-center gap-3 px-8 py-4 bg-theme-accent hover:bg-theme-accent-hover text-white font-bold rounded-lg transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(225,29,72,0.3)] mb-16"
         >
           <Mail size={20} />
-          {t('contact.email')}
+          [EMAIL_ADDRESS]
         </a>
 
         <div className="flex items-center justify-center gap-8">

@@ -1,28 +1,40 @@
 "use client";
 
 import DecryptedText from "../DecryptedText";
+import CanvasAvatar from "../CanvasAvatar";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative w-full px-6 pt-16">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(204,17,17,0.08),transparent_50%)] pointer-events-none" />
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 pt-24 gap-8 md:gap-16">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.05),transparent_70%)] pointer-events-none" />
       
-      <div className="z-10 text-center flex flex-col gap-4">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
+      {/* Left Column: Text Content */}
+      <div className="z-10 text-center md:text-left flex flex-col gap-4 max-w-xl order-2 md:order-1">
+        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter text-white mb-2 uppercase">
           <DecryptedText
             text="Ayşe Sude Özden"
             speed={60}
-            maxIterations={15}
+            maxIterations={20}
             animateOn="load"
             className="text-theme-text"
           />
         </h1>
-        <p className="text-theme-text-muted text-lg md:text-xl font-medium tracking-wide">
+        <p className="text-theme-text-muted text-lg md:text-2xl font-medium tracking-wide">
           {t('hero.subtitle')} <span className="text-theme-accent mx-2">&bull;</span> {t('hero.creative')}
         </p>
+        
+        {/* Call to Action or extra flair could go here */}
+        <div className="mt-8 flex justify-center md:justify-start">
+           <div className="h-1 w-24 bg-theme-accent rounded-full opacity-50"></div>
+        </div>
+      </div>
+
+      {/* Right Column: Binary Avatar */}
+      <div className="z-10 order-1 md:order-2">
+        <CanvasAvatar />
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
