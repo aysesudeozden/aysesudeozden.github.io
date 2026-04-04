@@ -8,7 +8,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 pt-24 gap-8 md:gap-16">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 gap-8 md:gap-16">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.05),transparent_70%)] pointer-events-none" />
       
       {/* Left Column: Text Content */}

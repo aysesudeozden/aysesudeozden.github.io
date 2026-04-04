@@ -36,8 +36,8 @@ export default function CanvasAvatar() {
 
     const init = (img: HTMLImageElement) => {
       // Significantly larger for the "enlarge" request
-      const targetWidth = 700;
-      const targetHeight = 900;
+      const targetWidth = 800;
+      const targetHeight = 1000;
       canvas.width = targetWidth;
       canvas.height = targetHeight;
 
@@ -45,7 +45,7 @@ export default function CanvasAvatar() {
       const drawWidth = img.width * scale;
       const drawHeight = img.height * scale;
       const offsetX = (targetWidth - drawWidth) / 2;
-      const offsetY = (targetHeight - drawHeight) / 2;
+      const offsetY = (targetHeight - drawHeight) / 2 - 40; // Shift it up more
 
       const tempCanvas = document.createElement("canvas");
       const tempCtx = tempCanvas.getContext("2d")!;
@@ -161,7 +161,7 @@ export default function CanvasAvatar() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-[550px] aspect-[4/5] mx-auto md:mx-0 group">
+    <div ref={containerRef} className="relative w-full max-w-[650px] aspect-[4/5] mx-auto md:mx-0 group">
       {!imgLoaded && (
         <div className="absolute inset-0 flex items-center justify-center text-theme-text-muted animate-pulse font-mono text-sm">
           [LOADING_AVATAR...]
