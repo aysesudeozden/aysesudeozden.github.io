@@ -44,8 +44,7 @@ export default function Navbar() {
 
         <nav className="flex items-center gap-4 md:gap-6 lg:gap-8 text-theme-text font-medium text-xs md:text-sm">
           <button onClick={() => handleScrollTo('about')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.about')}</button>
-          <button onClick={() => handleScrollTo('skills')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.skills')}</button>
-          <button onClick={() => handleScrollTo('education')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.education')}</button>
+          <button onClick={() => handleScrollTo('education')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.edu_exp')}</button>
           <button onClick={() => handleScrollTo('projects')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.projects')}</button>
           <button onClick={() => handleScrollTo('contact')} className="hover:text-theme-accent transition-colors whitespace-nowrap">{t('nav.contact')}</button>
         </nav>

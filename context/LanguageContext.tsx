@@ -14,7 +14,7 @@ interface Translations {
 const translations: Translations = {
   // Navbar
   "nav.about": { tr: "Hakkımda", en: "About" },
-  "nav.education": { tr: "Eğitim", en: "Education" },
+  "nav.edu_exp": { tr: "Eğitim & Deneyim", en: "Edu & Exp" },
   "nav.projects": { tr: "Projeler", en: "Projects" },
   // Hero
   "hero.subtitle": {
@@ -29,20 +29,29 @@ const translations: Translations = {
     tr: "İnsan merkezli, okunabilirliği yüksek ve performansı odakta tutan modern uygulamalar inşa etmekten keyif alıyorum. Geliştirdiğim her projede estetiği ve fonksiyonelliği bir araya getirmeye çabalıyorum.",
     en: "I enjoy building human-centric, highly readable, and performance-oriented modern applications. I strive to combine aesthetics with functionality in every project I develop."
   },
-  // Education
+  // Education & Experience
+  "edu_exp.title": { tr: "Eğitim & Deneyim", en: "Education & Experience" },
   "edu.title": { tr: "Eğitim", en: "Education" },
   "edu.university": { tr: "Bilgisayar Mühendisliği (Lisans)", en: "Computer Engineering (B.Sc)" },
   "edu.university.desc": { tr: "Yazılım geliştirme, algoritmalar ve veri yapıları üzerine odaklanarak mezun oldum.", en: "Graduated with a focus on software development, algorithms, and data structures." },
   "edu.highschool": { tr: "Lise Eğitimi", en: "High School" },
   "edu.highschool.desc": { tr: "Sayısal bölüm mezunu.", en: "Graduated from Science & Math track." },
+  
+  "exp.title": { tr: "Deneyim", en: "Experience" },
+  "exp.intern1.title": { tr: "Yazılım Stajyeri", en: "Software Engineering Intern" },
+  "exp.intern1.desc": { tr: "Full-stack geliştirme süreçlerine katkı sağladım, modern web teknolojileriyle projeler geliştirdim.", en: "Contributed to full-stack development processes, developed projects with modern web technologies." },
+  "exp.intern2.title": { tr: "Frontend Stajyeri", en: "Frontend Developer Intern" },
+  "exp.intern2.desc": { tr: "Kullanıcı arayüzü tasarımı ve React bileşenleri üzerine yoğunlaştım.", en: "Focused on UI design and React component development." },
+  "exp.intern3.title": { tr: "Backend Stajyeri", en: "Backend Developer Intern" },
+  "exp.intern3.desc": { tr: "Sunucu taraflı mantık ve veritabanı yönetimi konularında deneyim kazandım.", en: "Gained experience in server-side logic and database management." },
+  "exp.company": { tr: "Şirket Adı", en: "Company Name" },
   // Projects
   "proj.title": { tr: "Projeler", en: "Projects" },
   "proj.1.desc": { tr: "Modern web teknolojileri kullanılarak geliştirilmiş interaktif platform.", en: "An interactive platform developed using modern web technologies." },
   "proj.2.desc": { tr: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.", en: "Fast and reliable mobile application interface focused on advanced user experience." },
   // Skills
-  "nav.skills": { tr: "Yetenekler", en: "Skills" },
   "skills.title": { tr: "Yetenekler", en: "Skills" },
-  "skills.desc": { tr: "Sürekli öğreniyor ve geliştiriyorum. İşte şu ana kadar uzmanlaştığım bazı teknolojiler:", en: "I am constantly learning and improving. Here are some technologies I have mastered so far:" },
+  "skills.desc": { tr: "Uzmanlaştığım teknolojiler:", en: "Technologies I've mastered:" },
   // Contact
   "nav.contact": { tr: "İletişim", en: "Contact" },
   "contact.title": { tr: "İletişim", en: "Contact" },
