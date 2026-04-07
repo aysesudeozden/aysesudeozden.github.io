@@ -5,7 +5,6 @@ import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Education from '@/components/sections/Education';
 import Projects from '@/components/sections/Projects';
-import Contact from '@/components/sections/Contact';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
       <About />
       <Education />
       <Projects />
-      <Contact />
 
       {/* Footer */}
       <footer className="py-8 text-center text-theme-text-muted text-sm border-t border-theme-border/30">
