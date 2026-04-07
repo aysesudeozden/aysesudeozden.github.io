@@ -17,17 +17,17 @@ const translations: Translations = {
   "nav.education": { tr: "Eğitim", en: "Education" },
   "nav.projects": { tr: "Projeler", en: "Projects" },
   // Hero
-  "hero.subtitle": { tr: "Yazılım Geliştirici", en: "Software Developer" },
-  "hero.creative": { tr: "Üretken Düşünür", en: "Creative Thinker" },
+  "hero.subtitle": {
+    tr: "Merhaba, ben Sude Özden. Teknolojiye ve yazılıma duyduğum merakla, karmaşık problemleri sade ve zarif çözümlere dönüştürmeyi hedefleyen bir geliştiriciyim.",
+    en: "Hey there, I'm Sude Özden. With my curiosity for technology and software, I am a developer aiming to turn complex problems into simple and elegant solutions."
+  },
+  "hero.creative": { tr: "Yenilikçi Çözüm Üretici", en: "Innovative Solution Provider" },
+  "hero.contact": { tr: "Benimle İletişime Geç", en: "Contact Me" },
   // About
   "about.title": { tr: "Hakkımda", en: "About" },
-  "about.p1": { 
-    tr: "Merhaba, ben Ayşe Sude Özden. Teknolojiye ve yazılıma duyduğum merakla, karmaşık problemleri sade ve zarif çözümlere dönüştürmeyi hedefleyen bir geliştiriciyim.", 
-    en: "Hello, I'm Ayşe Sude Özden. With my curiosity for technology and software, I am a developer aiming to turn complex problems into simple and elegant solutions." 
-  },
-  "about.p2": { 
-    tr: "İnsan merkezli, okunabilirliği yüksek ve performansı odakta tutan modern uygulamalar inşa etmekten keyif alıyorum. Geliştirdiğim her projede estetiği ve fonksiyonelliği bir araya getirmeye çabalıyorum.", 
-    en: "I enjoy building human-centric, highly readable, and performance-oriented modern applications. I strive to combine aesthetics with functionality in every project I develop." 
+  "about.p1": {
+    tr: "İnsan merkezli, okunabilirliği yüksek ve performansı odakta tutan modern uygulamalar inşa etmekten keyif alıyorum. Geliştirdiğim her projede estetiği ve fonksiyonelliği bir araya getirmeye çabalıyorum.",
+    en: "I enjoy building human-centric, highly readable, and performance-oriented modern applications. I strive to combine aesthetics with functionality in every project I develop."
   },
   // Education
   "edu.title": { tr: "Eğitim", en: "Education" },

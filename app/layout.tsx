@@ -5,8 +5,11 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ayşe Sude Özden | Portfolio",
-  description: "Minimalist and interactive portfolio of Ayşe Sude Özden",
+  title: "Sude Özden",
+  description: "Interactive portfolio of Sude Özden",
+  icons: {
+    icon: "/ruby.png",
+  },
 };
 
 export default function RootLayout({

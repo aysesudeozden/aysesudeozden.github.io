@@ -3,7 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
-  "React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS", 
+  "React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS",
   "Node.js", "Express", "HTML5", "CSS3", "Framer Motion", "Git", "Figma"
 ];
 
@@ -29,9 +29,9 @@ export default function Skills() {
         <div className="flex animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]">
           {/* Double repetition for seamless loop */}
           {[...skills, ...skills, ...skills].map((skill, index) => (
-            <div 
-              key={index} 
-              className="mx-4 px-6 py-3 rounded-full border border-theme-border bg-theme-surface text-theme-text font-medium text-lg uppercase tracking-wider hover:border-theme-accent hover:text-theme-accent hover:shadow-[0_0_15px_rgba(178,52,35,0.3)] transition-all cursor-crosshair pb-1"
+            <div
+              key={index}
+              className="mx-4 px-6 py-1 rounded-full border border-theme-border bg-theme-surface text-theme-text font-medium text-lg uppercase tracking-wider hover:border-theme-accent hover:text-theme-accent hover:shadow-[0_0_15px_rgba(178,52,35,0.3)] transition-all cursor-crosshair pb-1"
             >
               {skill}
             </div>

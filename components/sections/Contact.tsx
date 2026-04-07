@@ -20,14 +20,6 @@ export default function Contact() {
           {t('contact.desc')}
         </p>
 
-        <a
-          href="mailto:[EMAIL_ADDRESS]"
-          className="inline-flex items-center gap-3 px-8 py-4 bg-theme-accent hover:bg-theme-accent-hover text-white font-bold rounded-lg transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(225,29,72,0.3)] mb-16"
-        >
-          <Mail size={20} />
-          [EMAIL_ADDRESS]
-        </a>
-
         <div className="flex items-center justify-center gap-8">
           <a href="https://github.com/aysesudeozden" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-theme-text-muted hover:text-theme-text transition-colors">
             <Github size={24} />
