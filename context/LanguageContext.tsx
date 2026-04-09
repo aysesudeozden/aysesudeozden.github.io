@@ -18,10 +18,10 @@ const translations: Translations = {
   "nav.projects": { tr: "Projeler", en: "Projects" },
   // Hero
   "hero.subtitle": {
-    tr: "Merhaba, ben Sude Özden. Teknolojiye ve yazılıma duyduğum merakla, karmaşık problemleri sade ve zarif çözümlere dönüştürmeyi hedefleyen bir geliştiriciyim.",
-    en: "Hey there, I'm Sude Özden. With my curiosity for technology and software, I am a developer aiming to turn complex problems into simple and elegant solutions."
+    tr: "Merhaba, sürekli soru sormayı ve sorularıma gerekli araştırmalar ile cevap bulmayı seven, yenilenen teknolojiye ayak uydurmaya çalışan bir bilgisayar mühendisiyim. ",
+    en: "Hey there, I am a computer engineer who loves asking questions and finding answers to them through research, and who tries to keep up with new technologies."
   },
-  "hero.creative": { tr: "Yenilikçi Çözüm Üretici", en: "Innovative Solution Provider" },
+  "hero.creative": { tr: "Fullstack Geliştirici", en: "Fullstack Developer" },
   "hero.contact": { tr: "Benimle İletişime Geç", en: "Contact Me" },
   // About
   "about.title": { tr: "Hakkımda", en: "About" },
@@ -36,7 +36,7 @@ const translations: Translations = {
   "edu.university.desc": { tr: "Yazılım geliştirme, algoritmalar ve veri yapıları üzerine odaklanarak mezun oldum.", en: "Graduated with a focus on software development, algorithms, and data structures." },
   "edu.highschool": { tr: "Lise Eğitimi", en: "High School" },
   "edu.highschool.desc": { tr: "Sayısal bölüm mezunu.", en: "Graduated from Science & Math track." },
-  
+
   "exp.title": { tr: "Deneyim", en: "Experience" },
   "exp.intern1.title": { tr: "Yazılım Stajyeri", en: "Software Engineering Intern" },
   "exp.intern1.desc": { tr: "Full-stack geliştirme süreçlerine katkı sağladım, modern web teknolojileriyle projeler geliştirdim.", en: "Contributed to full-stack development processes, developed projects with modern web technologies." },
@@ -58,6 +58,7 @@ const translations: Translations = {
   "contact.desc": { tr: "Sorularınız, fırsatlar veya sadece merhaba demek için bana ulaşabilirsiniz.", en: "Feel free to reach out to me for questions, opportunities, or just to say hi." },
   "contact.email": { tr: "E-posta Gönder", en: "Send an Email" },
   // Footer
+  "footer.left": { tr: "Ayşe Sude Özden tarafından 🎧 & 👩🏻‍💻 ile yapıldı", en: "Made with 🎧 & 👩🏻‍💻 by Ayşe Sude Özden" },
   "footer.rights": { tr: "Tüm hakları saklıdır.", en: "All rights reserved." }
 };
 

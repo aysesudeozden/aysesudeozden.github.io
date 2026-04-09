@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
-import { Moon, Sun, Globe, Github, Linkedin, Mail } from "lucide-react";
+import { Moon, Sun, Globe, Github, Linkedin, Mail, Instagram } from "lucide-react";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   const socialLinks = [
-    { icon: <Mail size={16} />, href: "mailto:aysesudeozden@gmail.com", label: "Email" },
+    { icon: <Instagram size={16} />, href: "https://www.instagram.com/aysesudeozden/", label: "Instagram" },
     { icon: <Github size={16} />, href: "https://github.com/aysesudeozden", label: "GitHub" },
     { icon: <Linkedin size={16} />, href: "https://linkedin.com/in/aysesudeozden", label: "LinkedIn" }
   ];
@@ -27,11 +27,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-8">
         {/* Left Side: Branding & Navigation */}
         <div className="flex items-center gap-8 md:gap-12">
-          <div 
-            className="text-theme-accent font-bold tracking-widest cursor-pointer text-xl md:text-2xl"
+          <div
+            className="text-theme-accent font-bold cursor-pointer text-md md:text-md"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            ASÖ
+            Sude Özden
           </div>
 
           <nav className="hidden md:flex items-center gap-6 lg:gap-10 text-theme-text font-medium text-sm tracking-wide">
@@ -45,10 +45,10 @@ export default function Navbar() {
         <div className="flex items-center gap-4 md:gap-6">
           <div className="flex items-center gap-3 border-r border-theme-border/30 pr-4">
             {socialLinks.map((link, i) => (
-              <a 
-                key={i} 
-                href={link.href} 
-                target="_blank" 
+              <a
+                key={i}
+                href={link.href}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-theme-text-muted hover:text-theme-accent transition-colors p-1.5 hover:scale-110 transform transition-all"
                 aria-label={link.label}
@@ -59,7 +59,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button 
+            <button
               onClick={toggleLang}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-theme-surface/50 border border-theme-border/50 text-theme-text text-xs font-bold hover:border-theme-accent hover:text-theme-accent transition-all"
             >
@@ -67,7 +67,7 @@ export default function Navbar() {
               {lang.toUpperCase()}
             </button>
 
-            <button 
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-theme-surface/50 border border-theme-border/50 text-theme-text hover:text-theme-accent hover:border-theme-accent transition-all animate-in fade-in zoom-in duration-300"
             >

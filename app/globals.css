@@ -1,33 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Koyu Mod (Dark Mode) - Orman & Toprak (Forest & Clay) */
-  --theme-bg: #111a0b; 
-  --theme-surface: #283618;
-  --theme-border: #606c38;
-  --theme-text: #edd3c4; 
-  --theme-text-muted: #606c38;
+  /* Koyu Mod (Dark Mode) - Midnight & Slate (Güven ve Profesyonellik) */
+  --theme-bg: #030712; 
+  --theme-surface: #111827;
+  --theme-border: #1f2937;
+  --theme-text: #f3f4f6; 
+  --theme-text-muted: #9ca3af;
   
-  /* Aksan ve Vurgu */
-  --theme-accent: #b23423;
-  --theme-accent-hover: #6f1a07;
+  /* Profesyonel Mavi Aksan */
+  --theme-accent: #60a5fa;
+  --theme-accent-hover: #3b82f6;
 }
 
 .light {
-  /* Açık Mod (Light Mode) - Doğal Şeftali & Orman */
-  --theme-bg: #f5e4da; /* Daha açık, kremsi şeftali */
-  --theme-surface: #edd3c4; /* Sizin verdiğiniz şeftali tonu yüzeyler için */
-  --theme-border: #606c38;
-  --theme-text: #283618;
-  --theme-text-muted: #6f1a07;
+  /* Açık Mod (Light Mode) - Pristine & Clean (Sadelik ve Netlik) */
+  --theme-bg: #f9fafb;
+  --theme-surface: #ffffff;
+  --theme-border: #e5e7eb;
+  --theme-text: #111827;
+  --theme-text-muted: #4b5563;
   
-  /* Aksan ve Vurgu */
-  --theme-accent: #b23423;
-  --theme-accent-hover: #6f1a07;
+  /* Canlı Mavi Aksan */
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #1d4ed8;
 }
 
 * {
@@ -37,7 +37,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background-color: var(--theme-bg);
   color: var(--theme-text);
   -webkit-font-smoothing: antialiased;

@@ -19,7 +19,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-theme-text-muted text-sm border-t border-theme-border/30">
-        <p>&copy; {new Date().getFullYear()} Ayşe Sude Özden. {t('footer.rights')}</p>
+        <em><p>{t('footer.left')} <br /> &copy; {new Date().getFullYear()} {t('footer.rights')} </p></em>
       </footer>
     </main>
   );

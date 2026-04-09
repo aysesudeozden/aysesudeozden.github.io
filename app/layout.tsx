@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sude Özden",
+  title: "Ayşe Sude Özden",
   description: "Interactive portfolio of Sude Özden",
   icons: {
     icon: "/ruby.png",

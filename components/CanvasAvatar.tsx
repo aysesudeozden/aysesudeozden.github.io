@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 interface Particle {
   x: number;
@@ -17,10 +18,12 @@ interface Particle {
 }
 
 export default function CanvasAvatar() {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [imgLoaded, setImgLoaded] = useState(false);
   const mouseRef = useRef({ x: -1000, y: -1000, radius: 50 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,11 +34,9 @@ export default function CanvasAvatar() {
     const image = new Image();
     image.src = "/avatar.png";
 
-    let particles: Particle[] = [];
-    const gap = 7; // Adjusted for larger canvas performance
+    const gap = 7;
 
     const init = (img: HTMLImageElement) => {
-      // Significantly larger for the "enlarge" request
       const targetWidth = 800;
       const targetHeight = 1000;
       canvas.width = targetWidth;
@@ -45,7 +46,7 @@ export default function CanvasAvatar() {
       const drawWidth = img.width * scale;
       const drawHeight = img.height * scale;
       const offsetX = (targetWidth - drawWidth) / 2;
-      const offsetY = (targetHeight - drawHeight) / 2 - 40; // Shift it up more
+      const offsetY = (targetHeight - drawHeight) / 2 - 40;
 
       const tempCanvas = document.createElement("canvas");
       const tempCtx = tempCanvas.getContext("2d")!;
@@ -55,9 +56,9 @@ export default function CanvasAvatar() {
 
       const pixels = tempCtx.getImageData(0, 0, drawWidth, drawHeight).data;
 
-      particles = [];
-      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-accent').trim() || "#b23423";
+      const textColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-text').trim() || "#ffffff";
 
+      particlesRef.current = [];
       for (let y = 0; y < drawHeight; y += gap) {
         for (let x = 0; x < drawWidth; x += gap) {
           const index = (Math.floor(y) * Math.floor(drawWidth) + Math.floor(x)) * 4;
@@ -66,20 +67,18 @@ export default function CanvasAvatar() {
           const b = pixels[index + 2];
           const alpha = pixels[index + 3];
 
-          // Calculate brightness for "boyut" (definition)
           const brightness = (r + g + b) / 3;
 
           if (alpha > 80) {
             const char = Math.random() > 0.5 ? "0" : "1";
-            // Map brightness to particle size and opacity for better features
             const particleSize = (brightness / 255) * 12 + 4;
 
-            particles.push({
+            particlesRef.current.push({
               x: Math.random() * targetWidth,
               y: Math.random() * targetHeight,
               originX: x + offsetX,
               originY: y + offsetY,
-              color: accentColor,
+              color: textColor,
               size: particleSize,
               friction: 0.88,
               ease: 0.12,
@@ -92,12 +91,13 @@ export default function CanvasAvatar() {
       }
     };
 
+    let animationFrameId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      particles.forEach((p) => {
+      particlesRef.current.forEach((p) => {
         const dx = mouseRef.current.x - p.x;
         const dy = mouseRef.current.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -106,7 +106,7 @@ export default function CanvasAvatar() {
 
         if (distance < radius) {
           const angle = Math.atan2(dy, dx);
-          p.vx -= Math.cos(angle) * force * 12; // Snappier push
+          p.vx -= Math.cos(angle) * force * 12;
           p.vy -= Math.sin(angle) * force * 12;
         }
 
@@ -115,27 +115,23 @@ export default function CanvasAvatar() {
         p.vx *= p.friction;
         p.vy *= p.friction;
 
-        const opacity = Math.max(0.3, 1 - distance / 150); // Increased base brightness
+        const opacity = Math.max(0.3, 1 - distance / 150);
         ctx.font = `bold ${p.size}px monospace`;
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 4; // Added glow
+        ctx.shadowBlur = 4;
         ctx.shadowColor = p.color;
         ctx.globalAlpha = opacity;
         ctx.fillText(p.char, p.x, p.y);
-        ctx.shadowBlur = 0; // Reset for next particle
+        ctx.shadowBlur = 0;
       });
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     image.onload = () => {
       setImgLoaded(true);
       init(image);
       animate();
-    };
-
-    image.onerror = () => {
-      console.error("Failed to load avatar image at /avatar.png");
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -155,10 +151,20 @@ export default function CanvasAvatar() {
     canvas.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
+  // Sync colors with theme changes
+  useEffect(() => {
+    if (!imgLoaded) return;
+    const textColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-text').trim() || "#ffffff";
+    particlesRef.current.forEach(p => {
+      p.color = textColor;
+    });
+  }, [theme, imgLoaded]);
 
   return (
     <div ref={containerRef} className="relative w-full max-w-[650px] aspect-[4/5] mx-auto md:mx-0 group">
@@ -169,7 +175,7 @@ export default function CanvasAvatar() {
       )}
       <canvas
         ref={canvasRef}
-        className="w-full h-full cursor-none drop-shadow-[0_0_20px_rgba(225,29,72,0.15)] transition-opacity duration-700"
+        className="w-full h-full cursor-none drop-shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-opacity duration-700"
         style={{ opacity: imgLoaded ? 1 : 0 }}
       />
     </div>
