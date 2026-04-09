@@ -34,8 +34,11 @@ const translations: Translations = {
   "edu.title": { tr: "Eğitim", en: "Education" },
   "edu.university": { tr: "Bilgisayar Mühendisliği (Lisans)", en: "Computer Engineering (B.Sc)" },
   "edu.university.desc": { tr: "Yazılım geliştirme, algoritmalar ve veri yapıları üzerine odaklanarak mezun oldum.", en: "Graduated with a focus on software development, algorithms, and data structures." },
-  "edu.highschool": { tr: "Lise Eğitimi", en: "High School" },
-  "edu.highschool.desc": { tr: "Sayısal bölüm mezunu.", en: "Graduated from Science & Math track." },
+  "edu.university.name": { tr: "Giresun Üniversitesi", en: "Giresun University" },
+  "edu.erasmus": { tr: "Erasmus+", en: "Erasmus+" },
+  "edu.erasmus.desc": { tr: "Erasmus+ programı kapsamında Polonya'da eğitim aldım.", en: "I studied in Poland within the scope of the Erasmus+ program." },
+  "edu.erasmus.year": { tr: "Şubat - Temmuz 2023", en: "February - July 2023" },
+  "edu.erasmus.name": { tr: "Uniwersytet Kazimierza Wielkiego", en: "Kazimierz Wielki University" },
 
   "exp.title": { tr: "Deneyim", en: "Experience" },
   "exp.intern1.title": { tr: "Yazılım Stajyeri", en: "Software Engineering Intern" },
@@ -44,7 +47,10 @@ const translations: Translations = {
   "exp.intern2.desc": { tr: "Kullanıcı arayüzü tasarımı ve React bileşenleri üzerine yoğunlaştım.", en: "Focused on UI design and React component development." },
   "exp.intern3.title": { tr: "Backend Stajyeri", en: "Backend Developer Intern" },
   "exp.intern3.desc": { tr: "Sunucu taraflı mantık ve veritabanı yönetimi konularında deneyim kazandım.", en: "Gained experience in server-side logic and database management." },
-  "exp.company": { tr: "Şirket Adı", en: "Company Name" },
+  "exp.company": { tr: "Dataliva Bilişim A.Ş.", en: "Dataliva  Inc." },
+  "exp.company2": { tr: "Ziraat Teknoloji A.Ş.", en: "Ziraat Technology Inc." },
+  "exp.company3": { tr: "Giresun Üniversitesi - Erasmus+ Koordinatörlüğü", en: "Giresun University - Erasmus+ Coordinatorship" },
+
   // Projects
   "proj.title": { tr: "Projeler", en: "Projects" },
   "proj.1.desc": { tr: "Modern web teknolojileri kullanılarak geliştirilmiş interaktif platform.", en: "An interactive platform developed using modern web technologies." },

@@ -7,36 +7,36 @@ export default function Education() {
 
   const educationList = [
     {
-      year: "2020 - 2024",
+      year: "2021 - 2025",
       degree: t('edu.university'),
-      institution: "Üniversite Adı",
+      institution: t('edu.university.name'),
       description: t('edu.university.desc')
     },
     {
-      year: "2016 - 2020",
-      degree: t('edu.highschool'),
-      institution: "Lise Adı",
-      description: t('edu.highschool.desc')
+      year: t('edu.erasmus.year'),
+      degree: t('edu.erasmus'),
+      institution: t('edu.erasmus.name'),
+      description: t('edu.erasmus.desc')
     }
   ];
 
   const experienceList = [
     {
-      year: "2023",
+      year: "2025",
       role: t('exp.intern1.title'),
       company: t('exp.company'),
       description: t('exp.intern1.desc')
     },
     {
-      year: "2022",
+      year: "2025",
       role: t('exp.intern2.title'),
-      company: t('exp.company'),
+      company: t('exp.company2'),
       description: t('exp.intern2.desc')
     },
     {
-      year: "2021",
+      year: "2023 - 2024",
       role: t('exp.intern3.title'),
-      company: t('exp.company'),
+      company: t('exp.company3'),
       description: t('exp.intern3.desc')
     }
   ];
@@ -58,11 +58,11 @@ export default function Education() {
           <div className="space-y-12">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-8 h-8 rounded-lg bg-theme-accent/10 flex items-center justify-center text-theme-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>
               </span>
               <h3 className="text-xl font-bold text-theme-text uppercase tracking-widest">{t('edu.title')}</h3>
             </div>
-            
+
             <div className="space-y-12 border-l border-theme-border/20 pl-8 ml-4">
               {educationList.map((item, index) => (
                 <div key={index} className="relative group">
@@ -80,7 +80,7 @@ export default function Education() {
           <div className="space-y-12">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-8 h-8 rounded-lg bg-theme-accent/10 flex items-center justify-center text-theme-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
               </span>
               <h3 className="text-xl font-bold text-theme-text uppercase tracking-widest">{t('exp.title')}</h3>
             </div>
