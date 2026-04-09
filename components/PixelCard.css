@@ -30,14 +30,14 @@
 }
 
 .pixel-card:hover {
-  border-color: rgba(230, 25, 25, 0.5);
+  border-color: rgba(10, 67, 190, 0.5);
 }
 
 .pixel-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(230, 25, 25, 0.1), transparent 85%);
+  background: radial-gradient(circle, rgba(10, 67, 190, 0.1), transparent 85%);
   opacity: 0;
   transition: opacity 800ms cubic-bezier(0.5, 1, 0.89, 1);
   z-index: 1;

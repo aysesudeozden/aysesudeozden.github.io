@@ -16,6 +16,16 @@ export default function Projects() {
       title: "Proje 2",
       description: t('proj.2.desc'),
       tech: ["TypeScript", "Framer Motion", "CSS"]
+    },
+    {
+      title: "Proje 3",
+      description: t('proj.3.desc'),
+      tech: ["TypeScript", "Framer Motion", "CSS"]
+    },
+    {
+      title: "Proje 4",
+      description: t('proj.4.desc'),
+      tech: ["TypeScript", "Framer Motion", "CSS"]
     }
   ];
 
@@ -31,10 +41,10 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 px-4">
           {projects.map((project, index) => (
             <div key={index} className="flex justify-center h-full">
-              <PixelCard 
-                colors="#606c38,#b23423,#283618" 
-                gap={12} 
-                speed={40} 
+              <PixelCard
+                colors="#0a43beff,#0f1f38ff,#111827ff"
+                gap={12}
+                speed={40}
                 className="h-[350px] w-full max-w-md"
               >
                 <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent text-left">
@@ -44,8 +54,8 @@ export default function Projects() {
                   </p>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((techItem, idx) => (
-                      <span 
-                        key={idx} 
+                      <span
+                        key={idx}
                         className="px-2.5 py-1 text-[10px] uppercase tracking-tighter font-bold border border-white/30 rounded bg-white/5 text-white"
                       >
                         {techItem}

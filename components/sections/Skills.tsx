@@ -4,7 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
   "React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS",
-  "Node.js", "Express", "HTML5", "CSS3", "Framer Motion", "Git", "Figma"
+  "Node.js", "Python", "Java", "CSS3", "Framer Motion", "Git", "Figma"
 ];
 
 export default function Skills() {
