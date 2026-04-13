@@ -40,12 +40,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-theme-bg/80 backdrop-blur-md border-b border-theme-border/20 px-6 md:px-12 h-20 flex items-center shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-theme-bg/80 backdrop-blur-md border-theme-border/20 px-6 md:px-12 h-20 flex items-center shadow-sm">
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-8">
         {/* Left Side: Branding & Navigation */}
         <div className="flex items-center gap-8 md:gap-12">
           <div
-            className="text-theme-accent font-bold cursor-pointer text-md md:text-md"
+            className="text-theme- font-bold cursor-pointer text-md md:text-md"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Sude Özden
@@ -93,9 +93,9 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll Progress Bar */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 h-[2px] bg-theme-accent transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
