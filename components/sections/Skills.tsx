@@ -4,7 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
   "React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS",
-  "Node.js", "Python", "Java", "CSS3", "Framer Motion", "Git", "Figma"
+  "Node.js", "Python", "Java", "CSS3", "Framer Motion", "Git", ""
 ];
 
 export default function Skills() {
@@ -16,7 +16,7 @@ export default function Skills() {
       <div className="max-w-5xl mx-auto w-full mb-12 text-center px-4">
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
-          <h2 className="text-3xl font-bold tracking-wider text-theme-accent uppercase">{t('skills.title')}</h2>
+          <h2 className="text-3xl font-bold ing-wider text-theme-accent uppercase">{t('skills.title')}</h2>
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
         </div>
         <p className="text-center text-theme-text-muted text-lg max-w-2xl mx-auto leading-relaxed">{t('skills.desc')}</p>

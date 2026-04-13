@@ -6,8 +6,25 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Moon, Sun, Globe, Github, Linkedin, Mail, Instagram } from "lucide-react";
 
 export default function Navbar() {
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const { lang, toggleLang, t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+      const currentScroll = window.scrollY;
+      const progress = (currentScroll / totalScroll) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -76,6 +93,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      
+      {/* Scroll Progress Bar */}
+      <div 
+        className="absolute bottom-0 left-0 h-[2px] bg-theme-accent transition-all duration-150 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
     </header>
   );
 }
