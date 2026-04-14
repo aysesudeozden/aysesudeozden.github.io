@@ -6,12 +6,12 @@
 
 :root {
   /* Koyu Mod (Dark Mode) - Midnight & Slate (Güven ve Profesyonellik) */
-  --theme-bg: #030712; 
+  --theme-bg: #030712;
   --theme-surface: #111827;
   --theme-border: #1f2937;
-  --theme-text: #f3f4f6; 
+  --theme-text: #ffffff;
   --theme-text-muted: #9ca3af;
-  
+
   /* Profesyonel Mavi Aksan */
   --theme-accent: #60a5fa;
   --theme-accent-hover: #3b82f6;
@@ -19,12 +19,12 @@
 
 .light {
   /* Açık Mod (Light Mode) - Pristine & Clean (Sadelik ve Netlik) */
-  --theme-bg: #f9fafb;
+  --theme-bg: #ffffff;
   --theme-surface: #ffffff;
   --theme-border: #e5e7eb;
   --theme-text: #111827;
   --theme-text-muted: #4b5563;
-  
+
   /* Canlı Mavi Aksan */
   --theme-accent: #2563eb;
   --theme-accent-hover: #1d4ed8;
@@ -50,8 +50,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Custom selection */
