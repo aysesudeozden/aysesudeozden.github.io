@@ -42,35 +42,35 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="min-h-screen py-20 px-6 pt-24 bg-theme-bg/50">
+    <section id="education" className="min-h-[75vh] py-12 px-6 pt-16 bg-theme-bg/50">
       <div className="max-w-6xl mx-auto w-full">
-        <div className="flex items-center gap-4 mb-20">
+        <div className="flex items-center gap-4 mb-12">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
           <h2 className="text-3xl font-bold tracking-wider text-theme-accent uppercase">{t('edu_exp.title')}</h2>
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 relative">
           {/* Vertical divider for desktop */}
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-theme-border opacity-10 hidden md:block -translate-x-1/2"></div>
 
           {/* Education Column */}
-          <div className="space-y-12">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-8 h-8 rounded-lg bg-theme-accent/10 flex items-center justify-center text-theme-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>
-              </span>
-              <h3 className="text-xl font-bold text-theme-text uppercase tracking-widest">{t('edu.title')}</h3>
-            </div>
+            <div className="space-y-8">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-8 h-8 rounded-lg bg-theme-accent/10 flex items-center justify-center text-theme-accent">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>
+                </span>
+                <h3 className="text-xl font-bold text-theme-text uppercase tracking-widest">{t('edu.title')}</h3>
+              </div>
 
-            <div className="space-y-12 border-l border-theme-border/20 pl-8 ml-4">
+              <div className="space-y-8 border-l border-theme-border/20 pl-8 ml-4">
               {educationList.map((item, index) => (
                 <div key={index} className="relative group">
                   <div className="absolute -left-[37px] top-1.5 w-[11px] h-[11px] rounded-full bg-theme-bg border-2 border-theme-accent group-hover:bg-theme-accent transition-colors"></div>
-                  <span className="text-theme-accent/80 font-bold text-xs tracking-widest block mb-2">{item.year}</span>
-                  <h4 className="text-lg font-bold text-theme-text mb-1 group-hover:text-theme-accent transition-colors">{item.degree}</h4>
-                  <p className="text-theme-text-muted text-sm font-semibold mb-3 italic uppercase">{item.institution}</p>
-                  <p className="text-theme-text/70 text-sm leading-relaxed max-w-md">{item.description}</p>
+                  <span className="text-theme-accent/80 font-bold text-xs tracking-widest block mb-1">{item.year}</span>
+                  <h4 className="text-base font-bold text-theme-text mb-1 group-hover:text-theme-accent transition-colors">{item.degree}</h4>
+                  <p className="text-theme-text-muted text-[11px] font-semibold mb-2 italic uppercase">{item.institution}</p>
+                  <p className="text-theme-text/70 text-xs leading-relaxed max-w-md">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -89,10 +89,10 @@ export default function Education() {
               {experienceList.map((item, index) => (
                 <div key={index} className="relative group">
                   <div className="absolute -left-[37px] top-1.5 w-[11px] h-[11px] rounded-full bg-theme-bg border-2 border-theme-accent group-hover:bg-theme-accent transition-colors"></div>
-                  <span className="text-theme-accent/80 font-bold text-xs tracking-widest block mb-2">{item.year}</span>
-                  <h4 className="text-lg font-bold text-theme-text mb-1 group-hover:text-theme-accent transition-colors">{item.role}</h4>
-                  <p className="text-theme-text-muted text-sm font-semibold mb-3 italic uppercase">{item.company}</p>
-                  <p className="text-theme-text/70 text-sm leading-relaxed max-w-md">{item.description}</p>
+                  <span className="text-theme-accent/80 font-bold text-xs tracking-widest block mb-1">{item.year}</span>
+                  <h4 className="text-base font-bold text-theme-text mb-1 group-hover:text-theme-accent transition-colors">{item.role}</h4>
+                  <p className="text-theme-text-muted text-[11px] font-semibold mb-2 italic uppercase">{item.company}</p>
+                  <p className="text-theme-text/70 text-xs leading-relaxed max-w-md">{item.description}</p>
                 </div>
               ))}
             </div>

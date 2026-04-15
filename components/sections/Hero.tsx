@@ -9,12 +9,12 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 gap-8 md:gap-16 transition-colors duration-500">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 gap-8 md:gap-12 transition-colors duration-500">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
 
       {/* Left Column: Text Content */}
       <div className="z-10 text-center md:text-left flex flex-col gap-4 max-w-xl order-2 md:order-1">
-        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter mb-2 uppercase">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-2 uppercase">
           <DecryptedText
             text="Sude"
             speed={60}
@@ -24,12 +24,12 @@ export default function Hero() {
           />
           <span className="text-theme-text"></span>
         </h1>
-        <div className="text-theme-text-muted text-lg md:text-2xl font-medium tracking-wide">
+        <div className="text-theme-text-muted text-lg md:text-xl font-medium tracking-wide">
           {t('hero.subtitle')}
         </div>
         <a
           href="mailto:aysesudeozden@gmail.com"
-          className="inline-flex items-center justify-center gap-3 py-4 bg-theme-accent hover:bg-theme-accent-hover text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_8px_30px_rgba(59,130,246,0.25)] mb-16"
+          className="inline-flex items-center justify-center gap-3 py-3 px-8 bg-theme-accent hover:bg-theme-accent-hover text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_8px_30px_rgba(59,130,246,0.25)] mb-12"
         >
           <Mail size={20} />
           {t('hero.contact')}

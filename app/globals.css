@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 :root {
+  font-size: 90%;
   /* Koyu Mod (Dark Mode) - Midnight & Slate (Güven ve Profesyonellik) */
   --theme-bg: #030712;
   --theme-surface: #111827;

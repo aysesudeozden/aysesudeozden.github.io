@@ -30,26 +30,26 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 pt-24">
+    <section id="projects" className="min-h-[85vh] flex items-center justify-center py-12 px-6 pt-16">
       <div className="max-w-5xl mx-auto w-full text-center">
-        <div className="flex items-center gap-4 mb-16">
+        <div className="flex items-center gap-4 mb-12">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
           <h2 className="text-3xl font-bold tracking-wider text-theme-accent uppercase">{t('proj.title')}</h2>
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4">
           {projects.map((project, index) => (
             <div key={index} className="flex justify-center h-full">
               <PixelCard
                 colors="#0a43beff,#0f1f38ff,#111827ff"
                 gap={12}
                 speed={40}
-                className="h-[350px] w-full max-w-md"
+                className="h-[300px] w-full max-w-md"
               >
-                <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent text-left">
-                  <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-[#d1d1d1] mb-6 text-sm leading-relaxed">
+                <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent text-left">
+                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                  <p className="text-[#d1d1d1] mb-4 text-xs leading-relaxed">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mt-auto">

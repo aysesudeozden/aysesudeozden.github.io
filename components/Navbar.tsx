@@ -78,17 +78,16 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-theme-surface/50 border border-theme-border/50 text-theme-text text-xs font-bold hover:border-theme-accent hover:text-theme-accent transition-all"
+              className="p-2 rounded-lg bg-theme-surface/50 border border-theme-border/50 text-theme-text hover:text-theme-accent hover:border-theme-accent transition-all animate-in fade-in zoom-in duration-300"
             >
               <Globe size={14} />
-              {lang.toUpperCase()}
             </button>
 
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-theme-surface/50 border border-theme-border/50 text-theme-text hover:text-theme-accent hover:border-theme-accent transition-all animate-in fade-in zoom-in duration-300"
             >
-              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
             </button>
           </div>
         </div>
