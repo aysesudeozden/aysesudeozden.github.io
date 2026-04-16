@@ -55,6 +55,8 @@ const translations: Translations = {
   "proj.title": { tr: "Projeler", en: "Projects" },
   "proj.1.desc": { tr: "Modern web teknolojileri kullanılarak geliştirilmiş interaktif platform.", en: "An interactive platform developed using modern web technologies." },
   "proj.2.desc": { tr: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.", en: "Fast and reliable mobile application interface focused on advanced user experience." },
+  "proj.3.desc": { tr: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.", en: "Fast and reliable mobile application interface focused on advanced user experience." },
+  "proj.4.desc": { tr: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.", en: "Fast and reliable mobile application interface focused on advanced user experience." },
   // Skills
   "skills.title": { tr: "Yetenekler", en: "Skills" },
   "skills.desc": { tr: "Uzmanlaştığım teknolojiler:", en: "Technologies I've mastered:" },

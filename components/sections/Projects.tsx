@@ -8,19 +8,19 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Proje 1",
+      title: "agent.exe",
       description: t('proj.1.desc'),
-      tech: ["Next.js", "React", "TailwindCSS"]
+      tech: ["Vue", "Electron", "SQL Server"]
     },
     {
-      title: "Proje 2",
+      title: "KAVŞAK360",
       description: t('proj.2.desc'),
-      tech: ["TypeScript", "Framer Motion", "CSS"]
+      tech: ["Python", "Raspberry Pi", "Hardware"]
     },
     {
-      title: "Proje 3",
+      title: "Cinematch",
       description: t('proj.3.desc'),
-      tech: ["TypeScript", "Framer Motion", "CSS"]
+      tech: ["React", "Next.js", "Python", "PostgreSQL", "TailwindCSS"]
     },
     {
       title: "Proje 4",

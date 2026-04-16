@@ -148,7 +148,7 @@ export default function PixelCard({
     if (!ctx) return;
     canvasRef.current.width = width;
     canvasRef.current.height = height;
-    
+
     const colorsArray = finalColors.split(',');
     const pxs: Pixel[] = [];
     for (let x = 0; x < width; x += finalGap) {
@@ -166,7 +166,7 @@ export default function PixelCard({
   const doAnimate = (fnName: 'appear' | 'disappear') => {
     const timeNow = performance.now();
     const timePassed = timeNow - timePreviousRef.current;
-    
+
     if (timePassed >= (1000 / 60)) {
       timePreviousRef.current = timeNow - (timePassed % (1000 / 60));
       const ctx = canvasRef.current?.getContext('2d');
@@ -211,7 +211,11 @@ export default function PixelCard({
       tabIndex={finalNoFocus ? -1 : 0}
     >
       <canvas className="pixel-canvas" ref={canvasRef} />
-      <div className="pixel-content">{children}</div>
+      <div className="pixel-content">
+        <div className="flex items-center gap-3 border-r border-theme-border/30 pr-4">
+
+        </div>
+        {children}</div>
     </div>
   );
 }
