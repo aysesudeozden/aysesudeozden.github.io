@@ -12,7 +12,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-20 px-6 pt-24 border-y border-theme-border/30 bg-theme-bg relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(96,108,56,0.05),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,169,110,0.05),transparent_70%)] pointer-events-none" />
       <div className="max-w-5xl mx-auto w-full mb-12 text-center px-4">
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px bg-theme-accent flex-1 opacity-20"></div>
@@ -31,7 +31,7 @@ export default function Skills() {
           {[...skills, ...skills, ...skills].map((skill, index) => (
             <div
               key={index}
-              className="mx-4 px-6 py-1 rounded-full border border-theme-border bg-theme-surface text-theme-text font-medium text-lg uppercase tracking-wider hover:border-theme-accent hover:text-theme-accent hover:shadow-[0_0_15px_rgba(178,52,35,0.3)] transition-all cursor-crosshair pb-1"
+              className="mx-4 px-6 py-1 rounded-full border border-theme-border bg-theme-surface text-theme-text font-medium text-lg uppercase tracking-wider hover:border-theme-accent hover:text-theme-accent hover:shadow-[0_0_15px_rgba(201,169,110,0.3)] transition-all cursor-crosshair pb-1"
             >
               {skill}
             </div>

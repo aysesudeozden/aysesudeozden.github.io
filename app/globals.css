@@ -6,29 +6,29 @@
 
 :root {
   font-size: 90%;
-  /* Koyu Mod (Dark Mode) - Midnight & Slate (Güven ve Profesyonellik) */
-  --theme-bg: #030712;
-  --theme-surface: #111827;
-  --theme-border: #1f2937;
-  --theme-text: #ffffff;
-  --theme-text-muted: #9ca3af;
+  /* Dark Mode — Deep Navy (#212844) Foundation */
+  --theme-bg: #191f38;
+  --theme-surface: #212844;
+  --theme-border: #2e3656;
+  --theme-text: #f0e7d5;
+  --theme-text-muted: #a09b8e;
 
-  /* Profesyonel Mavi Aksan */
-  --theme-accent: #60a5fa;
-  --theme-accent-hover: #3b82f6;
+  /* Warm Gold Accent — Bridges navy & cream */
+  --theme-accent: #c9a96e;
+  --theme-accent-hover: #dfc08a;
 }
 
 .light {
-  /* Açık Mod (Light Mode) - Pristine & Clean (Sadelik ve Netlik) */
-  --theme-bg: #ffffff;
-  --theme-surface: #ffffff;
-  --theme-border: #e5e7eb;
-  --theme-text: #111827;
-  --theme-text-muted: #4b5563;
+  /* Light Mode — Warm Cream (#f0e7d5) Foundation */
+  --theme-bg: #f0e7d5;
+  --theme-surface: #faf6ee;
+  --theme-border: #d4cbb8;
+  --theme-text: #212844;
+  --theme-text-muted: #4e5470;
 
-  /* Canlı Mavi Aksan */
-  --theme-accent: #2563eb;
-  --theme-accent-hover: #1d4ed8;
+  /* Deep Navy Accent — For light mode contrast */
+  --theme-accent: #212844;
+  --theme-accent-hover: #2e3656;
 }
 
 * {
@@ -60,5 +60,5 @@ body {
 /* Custom selection */
 ::selection {
   background-color: var(--theme-accent);
-  color: #fff;
+  color: #f0e7d5;
 }
