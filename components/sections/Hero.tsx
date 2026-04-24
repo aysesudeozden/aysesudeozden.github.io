@@ -1,6 +1,7 @@
 "use client";
 
 import DecryptedText from "../DecryptedText";
+import HeroTerminal from "../HeroTerminal";
 import { useLanguage } from "@/context/LanguageContext";
 import { Mail } from "lucide-react";
 
@@ -8,7 +9,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-6 gap-8 md:gap-12 transition-colors duration-500">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center relative w-full px-8 md:px-64 gap-10 md:gap-20  transition-colors duration-500">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.08),transparent_70%)] pointer-events-none" />
 
       {/* Left Column: Text Content */}
@@ -34,6 +35,12 @@ export default function Hero() {
           {t('hero.contact')}
         </a>
       </div>
+
+      {/* Right Column: Terminal + Code Editor Combo */}
+      <div className="z-10 order-1 md:order-2 hidden md:flex items-center justify-center md:flex-1">
+        <HeroTerminal />
+      </div>
+
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
         <svg
           width="24"
@@ -52,3 +59,4 @@ export default function Hero() {
     </section>
   );
 }
+
