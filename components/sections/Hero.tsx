@@ -1,7 +1,7 @@
 "use client";
 
 import DecryptedText from "../DecryptedText";
-import HeroTerminal from "../HeroTerminal";
+
 import { useLanguage } from "@/context/LanguageContext";
 import { Mail } from "lucide-react";
 
@@ -36,10 +36,7 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Right Column: Terminal + Code Editor Combo */}
-      <div className="z-10 order-1 md:order-2 hidden md:flex items-center justify-center md:flex-1">
-        <HeroTerminal />
-      </div>
+
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
         <svg
