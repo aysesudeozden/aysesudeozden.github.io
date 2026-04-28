@@ -11,15 +11,24 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <main className="relative flex flex-col bg-theme- overflow-x-hidden transition-colors duration-300 min-h-screen pt-16">
+    <main className="relative flex flex-col overflow-x-hidden min-h-screen pt-14 font-mono">
       <Hero />
       <About />
       <Education />
       <Projects />
 
       {/* Footer */}
-      <footer className="py-8 text-center text-theme-text-muted text-sm border-t border-theme-accent">
-        <em><p>{t('footer.left')} <br /> &copy; {new Date().getFullYear()} {t('footer.rights')} </p></em>
+      <footer className="py-8 px-6 border-t border-theme-border/50 bg-theme-surface/20">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-xs text-theme-text-dim font-mono">
+            <span className="text-theme-accent">▶</span>&nbsp;
+            <span className="text-theme-text-muted">{t('footer.left')}</span>
+          </div>
+          <div className="text-xs text-theme-text-dim font-mono">
+            © {new Date().getFullYear()} Ayşe Sude Özden &nbsp;·&nbsp;
+            <span>{t('footer.rights')}</span>
+          </div>
+        </div>
       </footer>
     </main>
   );

@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ayşe Sude Özden",
-  description: "Interactive portfolio of Sude Özden",
+  title: "Ayşe Sude Özden — AI & Data Engineer",
+  description: "Portfolio of Sude Özden — AI & Data Engineer specializing in Python, Java, Next.js, and Network Management.",
   icons: {
     icon: "/ruby.png",
   },
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-theme-bg min-h-screen relative text-theme-text font-sans transition-colors duration-300">
+      <body className="antialiased bg-theme-bg min-h-screen text-theme-text font-mono transition-colors duration-300 overflow-x-hidden">
         <ThemeProvider>
           <LanguageProvider>
             <Navbar />
