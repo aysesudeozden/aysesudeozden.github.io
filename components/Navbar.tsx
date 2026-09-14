@@ -1,42 +1,34 @@
 "use client";
 
+import { Moon, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const NAV_LINKS = [
-  { key: "nav.about", id: "about" },
-  { key: "nav.edu_exp", id: "education" },
-  { key: "nav.projects", id: "projects" },
-];
-
-const SOCIALS = [
-  { icon: <Github size={15} />, href: "https://github.com/aysesudeozden", label: "GitHub" },
-  { icon: <Linkedin size={15} />, href: "https://linkedin.com/in/aysesudeozden", label: "LinkedIn" },
-  { icon: <Instagram size={15} />, href: "https://www.instagram.com/aysesudeozden/", label: "Instagram" },
-  { icon: <Mail size={15} />, href: "mailto:aysesudeozden@gmail.com", label: "Email" },
+  { label: "nav.about", id: "about" },
+  { label: "nav.experience", id: "experience" },
+  { label: "nav.education", id: "education" },
+  { label: "nav.projects", id: "projects" },
+  { label: "nav.contact", id: "contact" },
 ];
 
 export default function Navbar() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("about");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0);
-
-      // Active section detection
-      const sections = ["about", "education", "projects"];
+      const sections = ["about", "experience", "education", "projects", "contact"];
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 120) {
+        if (el && window.scrollY >= el.offsetTop - 300) {
           setActiveSection(id);
           return;
         }
       }
-      setActiveSection("");
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -44,77 +36,79 @@ export default function Navbar() {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-theme-bg/90 backdrop-blur-md border-b border-theme-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between gap-8">
-
-        {/* Logo */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 group"
-          id="nav-logo"
-        >
-          <span className="text-theme-accent font-bold text-sm group-hover:text-theme-accent-hover transition-colors">
-            ~/sude-ozden
-          </span>
-          <span className="animate-blink text-theme-accent font-bold text-sm leading-none">▊</span>
-        </button>
-
-        {/* Nav links */}
-        <nav className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map(({ key, id }) => (
-            <button
-              key={id}
-              id={`nav-${id}`}
-              onClick={() => scrollTo(id)}
-              className={`px-4 py-1.5 text-xs tracking-wider transition-all rounded font-mono ${
-                activeSection === id
-                  ? "text-theme-accent bg-theme-accent/10 border border-theme-accent/30"
-                  : "text-theme-text-muted hover:text-theme-text hover:bg-theme-surface"
-              }`}
-            >
-              <span className="text-theme-text-dim mr-1">./</span>
-              {t(key)}
-            </button>
-          ))}
-        </nav>
-
-        {/* Right controls */}
-        <div className="flex items-center gap-3">
-          {/* Socials */}
-          <div className="hidden sm:flex items-center gap-2 border-r border-theme-border pr-3">
-            {SOCIALS.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="text-theme-text-muted hover:text-theme-accent transition-colors p-1.5 hover:bg-theme-surface rounded"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
-
-          {/* Language toggle */}
+    <>
+      {/* Desktop Vertical Navbar (Left Side Anchor) */}
+      <nav className="hidden lg:flex flex-col gap-6 absolute bottom-16 left-16 z-50">
+        {NAV_LINKS.map(({ label, id }) => (
           <button
-            id="lang-toggle"
-            onClick={toggleLang}
-            className="px-3 py-1.5 text-xs font-bold text-theme-text-muted border border-theme-border rounded hover:border-theme-accent hover:text-theme-accent transition-all font-mono"
+            key={id}
+            onClick={() => scrollTo(id)}
+            className={`font-serif text-sm tracking-[0.3em] uppercase text-left transition-all duration-500 hover:text-theme-secondary hover:translate-x-4
+              ${activeSection === id ? "text-theme-text font-semibold translate-x-2" : "text-theme-text-muted"}
+            `}
           >
-            {lang === "tr" ? "EN" : "TR"}
+            {activeSection === id && <span className="mr-2 inline-block w-2 h-2 rounded-full bg-theme-accent mist-fade"></span>}
+            {t(label)}
+          </button>
+        ))}
+
+        <div className="flex items-center gap-6 mt-8 pt-8 border-t border-theme-border/30">
+          <button 
+            onClick={toggleLang}
+            className="font-serif text-xs tracking-widest text-theme-text-muted hover:text-theme-secondary transition-colors uppercase"
+          >
+            {lang === 'en' ? 'TR' : 'EN'}
+          </button>
+          
+          <button 
+            onClick={toggleTheme}
+            className="text-theme-text-muted hover:text-theme-secondary transition-colors"
+            aria-label="Toggle theme"
+          >
+             <Moon size={16} className={`transition-transform duration-500 ${theme === 'light' ? 'rotate-180' : ''}`} />
           </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Scroll progress line */}
-      <div
-        className="absolute bottom-0 left-0 h-[1px] bg-theme-accent transition-all duration-100 ease-out"
-        style={{ width: `${scrollProgress}%`, boxShadow: "0 0 8px var(--theme-accent)" }}
-      />
-    </header>
+      {/* Mobile Top Navbar */}
+      <header className={`lg:hidden fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between transition-colors duration-500 ${mobileMenuOpen ? 'bg-theme-bg' : 'bg-theme-bg/80 backdrop-blur-md'}`}>
+        <button
+          onClick={() => scrollTo("about")}
+          className="font-serif text-xl italic tracking-wider text-theme-text"
+        >
+          Sude.
+        </button>
+        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-theme-text">
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </header>
+
+      {/* Mobile Fullscreen Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-theme-bg pt-32 px-8 flex flex-col gap-8">
+          {NAV_LINKS.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className="font-serif text-2xl tracking-[0.2em] uppercase text-left text-theme-text"
+            >
+              {t(label)}
+            </button>
+          ))}
+          <div className="flex items-center gap-8 mt-auto mb-16">
+            <button onClick={toggleLang} className="font-serif text-lg tracking-widest text-theme-text uppercase">
+              {lang === 'en' ? 'TR' : 'EN'}
+            </button>
+            <button onClick={toggleTheme} className="text-theme-text">
+              <Moon size={24} className={theme === 'light' ? 'rotate-180' : ''} />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

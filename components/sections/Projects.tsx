@@ -1,149 +1,86 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Droplet } from "lucide-react";
 
 const PROJECTS = [
   {
-    id: "01",
+    id: "I",
     title: "agent.exe",
-    description: "proj.1.desc",
-    tech: ["Vue", "Electron", "SQL Server"],
-    status: "production",
-    github: "https://github.com/aysesudeozden",
+    description: "Automated workflow management.",
+    tech: "Vue / Electron",
+    link: "https://github.com/aysesudeozden",
   },
   {
-    id: "02",
+    id: "II",
     title: "KAVŞAK360",
-    description: "proj.2.desc",
-    tech: ["Python", "Raspberry Pi", "Hardware"],
-    status: "archived",
-    github: "https://github.com/aysesudeozden",
+    description: "Computer vision intersection control.",
+    tech: "Python / Raspberry Pi",
+    link: "https://github.com/aysesudeozden",
   },
   {
-    id: "03",
+    id: "III",
     title: "Cinematch",
-    description: "proj.3.desc",
-    tech: ["Next.js", "Python", "PostgreSQL", "TailwindCSS"],
-    status: "in-progress",
-    github: "https://github.com/aysesudeozden",
-  },
-  {
-    id: "04",
-    title: "Portfolio v3",
-    description: "proj.4.desc",
-    tech: ["Next.js", "TypeScript", "CSS"],
-    status: "production",
-    github: "https://github.com/aysesudeozden",
+    description: "Algorithmic movie recommendations.",
+    tech: "Next.js / Python",
+    link: "https://github.com/aysesudeozden",
   },
 ];
-
-const STATUS_STYLES: Record<string, string> = {
-  "production":   "text-green-400 border-green-400/30 bg-green-400/5",
-  "in-progress":  "text-theme-accent border-theme-accent/30 bg-theme-accent/5",
-  "archived":     "text-theme-text-muted border-theme-border bg-transparent",
-};
 
 export default function Projects() {
   const { t } = useLanguage();
 
   return (
-    <section id="projects" className="py-20 px-6 md:px-12 relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-32 px-8 lg:px-16 bg-theme-bg relative overflow-hidden">
+      
+      {/* Background mood lighting */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-theme-accent/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
 
-        {/* CLI header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-1 text-xs">
-            <span className="text-theme-accent font-bold">sude@portfolio</span>
-            <span className="text-theme-text-dim">:~$</span>
-            <span className="text-theme-text ml-1">git log --oneline --all --projects</span>
-          </div>
-          <div className="flex items-center gap-4 mt-4">
-            <div className="w-1 h-8 bg-theme-amber rounded-full" />
-            <h2 className="text-xl font-bold text-theme-text tracking-wider uppercase font-mono">
-              {t("proj.title")}
-            </h2>
-          </div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 border-b border-theme-border pb-8">
+          <h2 className="font-serif text-5xl md:text-7xl text-theme-text font-light tracking-wide flex items-center gap-6">
+            {t('proj.title')} <Droplet size={32} className="text-theme-accent opacity-50" />
+          </h2>
+          <p className="text-theme-text-muted max-w-sm font-light">
+            {t('proj.desc')}
+          </p>
         </div>
 
-        {/* Project cards as "commit" entries */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {PROJECTS.map((project) => (
-            <article
-              key={project.id}
-              id={`project-${project.id}`}
-              className="group relative bg-theme-surface border border-theme-border rounded-lg p-6 hover:border-theme-accent/50 transition-all hover:shadow-[0_0_25px_rgba(88,166,255,0.06)] cursor-default"
+        <div className="flex flex-col gap-12 md:gap-0">
+          {PROJECTS.map((project, idx) => (
+            <a 
+              key={idx} 
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block py-8 md:py-16 border-b border-theme-border/50 hover:border-theme-accent transition-colors duration-500"
             >
-              {/* Commit hash + status */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs text-theme-text-dim font-mono">
-                  <span className="text-theme-amber">commit</span> {project.id}a7f3c
+              {/* Frosted Hover Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-theme-surface to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10"></div>
+              
+              <div className="flex flex-col md:flex-row items-baseline gap-4 md:gap-12 relative z-10">
+                <span className="font-serif text-theme-secondary/50 text-2xl md:text-4xl w-16 md:w-24 group-hover:text-theme-accent transition-colors duration-500">
+                  {project.id}
                 </span>
-                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${STATUS_STYLES[project.status]}`}>
-                  {project.status}
-                </span>
+                
+                <h3 className="font-serif text-3xl md:text-6xl text-theme-text group-hover:translate-x-4 transition-transform duration-700 ease-out flex-1">
+                  {project.title}
+                </h3>
+                
+                <div className="flex-1 flex flex-col md:items-end text-left md:text-right mt-4 md:mt-0 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-theme-text-muted mb-2 font-light">{project.description}</p>
+                  <p className="text-xs font-bold tracking-[0.2em] text-theme-secondary uppercase">{project.tech}</p>
+                </div>
+
+                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-theme-border group-hover:border-theme-accent group-hover:bg-theme-accent text-theme-text transition-all duration-500">
+                  <ExternalLink size={16} className="group-hover:rotate-45 transition-transform duration-500" />
+                </div>
               </div>
-
-              {/* Title */}
-              <h3 className="text-base font-bold text-theme-text mb-2 group-hover:text-theme-accent transition-colors font-mono">
-                {project.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-xs text-theme-text-muted leading-relaxed mb-5">
-                <span className="tok-comment">//</span> {t(project.description)}
-              </p>
-
-              {/* Tech badges */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 text-[10px] font-mono text-syn-string bg-theme-surface-2 border border-theme-border/50 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Links */}
-              <div className="flex items-center gap-3 border-t border-theme-border/30 pt-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-theme-text-muted hover:text-theme-accent transition-colors font-mono"
-                  aria-label={`View ${project.title} on GitHub`}
-                >
-                  <Github size={13} />
-                  source
-                </a>
-                <span className="text-theme-text-dim">·</span>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-theme-text-muted hover:text-theme-accent transition-colors font-mono"
-                  aria-label={`Open ${project.title}`}
-                >
-                  <ExternalLink size={13} />
-                  view
-                </a>
-              </div>
-
-              {/* Hover accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-theme-accent to-theme-amber rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-            </article>
+            </a>
           ))}
         </div>
 
-        {/* Footer note */}
-        <div className="mt-8 text-xs text-theme-text-dim font-mono">
-          <span className="text-theme-accent">▶</span>&nbsp; {PROJECTS.length} projects found &nbsp;·&nbsp;
-          <a href="https://github.com/aysesudeozden" className="hover:text-theme-accent transition-colors underline underline-offset-2">
-            view all on GitHub ↗
-          </a>
-        </div>
       </div>
     </section>
   );

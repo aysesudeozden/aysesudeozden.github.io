@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
+import CustomCursor from "@/components/CustomCursor";
+import ForksWeather from "@/components/ForksWeather";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,6 +24,12 @@ export default function RootLayout({
       <body className="antialiased bg-theme-bg min-h-screen text-theme-text font-mono transition-colors duration-300 overflow-x-hidden">
         <ThemeProvider>
           <LanguageProvider>
+            {/* Cinematic Overlays */}
+            <div className="film-grain"></div>
+            <div className="vignette"></div>
+            <CustomCursor />
+            <ForksWeather />
+            
             <Navbar />
             {children}
           </LanguageProvider>
