@@ -6,22 +6,22 @@ import { Feather } from "lucide-react";
 
 const EXPERIENCE_DATA = [
   {
-    year: "2025",
-    title: "Software Engineering Intern",
-    company: "Tech Corp",
-    desc: "Worked on AI integration and data pipelines, bridging the gap between raw data and actionable intelligence.",
-  },
-  {
     year: "2024",
-    title: "Data Analyst Intern",
-    company: "Data Inc",
-    desc: "Built complex dashboards and performed rigorous statistical analysis to uncover hidden patterns.",
+    titleKey: "exp.intern3.title",
+    companyKey: "exp.company3",
+    descKey: "exp.intern3.desc",
   },
   {
-    year: "2021 – 2025",
-    title: "B.Sc. Computer Engineering",
-    company: "Giresun University",
-    desc: "Focus on AI, Data Structures, and advanced algorithmic design.",
+    year: "2023",
+    titleKey: "exp.intern2.title",
+    companyKey: "exp.company2",
+    descKey: "exp.intern2.desc",
+  },
+  {
+    year: "2022",
+    titleKey: "exp.intern1.title",
+    companyKey: "exp.company1",
+    descKey: "exp.intern1.desc",
   },
 ];
 
@@ -52,50 +52,29 @@ export default function Experience() {
         </h2>
 
         <div className="space-y-24">
-          {EXPERIENCE_DATA.map((item, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div 
-                key={index} 
-                className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              >
-                {/* Left Side (Empty on mobile, alternating on desktop) */}
-                <div className={`hidden md:block w-1/2 ${isEven ? 'text-right pr-16' : 'order-last text-left pl-16'}`}>
-                  {isEven && (
-                    <div className="font-serif text-5xl text-theme-text/10 italic">{item.year}</div>
-                  )}
-                  {!isEven && (
-                    <div className="space-y-4">
-                      <h3 className="font-serif text-2xl text-theme-text">{item.title}</h3>
-                      <p className="text-sm font-bold text-theme-accent tracking-widest uppercase">{item.company}</p>
-                      <p className="text-theme-text-muted font-light leading-relaxed">{item.desc}</p>
-                    </div>
-                  )}
-                </div>
+          {EXPERIENCE_DATA.map((exp, idx) => (
+            <div 
+              key={idx} 
+              className={`relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-16 transition-all duration-1000 delay-${idx * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            >
+              
+              {/* Timeline Dot */}
+              <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border border-theme-accent bg-theme-bg z-10 shadow-[0_0_15px_var(--theme-accent)]"></div>
 
-                {/* Center Timeline Node */}
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border border-theme-accent bg-theme-bg flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full bg-theme-secondary opacity-50"></div>
-                </div>
-
-                {/* Right Side (Content on mobile, alternating on desktop) */}
-                <div className={`w-full pl-12 md:pl-0 md:w-1/2 ${isEven ? 'text-left md:pl-16' : 'text-left md:text-right md:pr-16 md:order-first'}`}>
-                  {!isEven && (
-                    <div className="hidden md:block font-serif text-5xl text-theme-text/10 italic">{item.year}</div>
-                  )}
-                  {isEven && (
-                    <div className="space-y-4">
-                      <h3 className="font-serif text-2xl text-theme-text">{item.title}</h3>
-                      <p className="text-sm font-bold text-theme-accent tracking-widest uppercase">{item.company}</p>
-                      <p className="text-theme-text-muted font-light leading-relaxed">{item.desc}</p>
-                    </div>
-                  )}
-                  {/* Mobile year display */}
-                  <div className="md:hidden mt-4 font-serif text-3xl text-theme-text/20 italic">{item.year}</div>
-                </div>
+              {/* Left Side (Even items) */}
+              <div className={`w-full md:w-1/2 ${idx % 2 === 0 ? 'md:text-right md:pr-12' : 'md:order-last md:pl-12'} pl-12 md:pl-0`}>
+                <div className="font-mono text-sm tracking-widest text-theme-accent mb-2">{exp.year}</div>
+                <h3 className="font-serif text-2xl text-theme-text mb-2">{t(exp.titleKey)}</h3>
+                <div className="text-theme-text-muted text-sm uppercase tracking-wider font-semibold mb-4">{t(exp.companyKey)}</div>
               </div>
-            );
-          })}
+
+              {/* Right Side (Even items) */}
+              <div className={`w-full md:w-1/2 ${idx % 2 === 0 ? 'md:pl-12' : 'md:text-right md:pr-12'} pl-12 md:pl-0`}>
+                <p className="text-theme-text-muted font-light leading-relaxed">{t(exp.descKey)}</p>
+              </div>
+
+            </div>
+          ))}
         </div>
       </div>
     </section>

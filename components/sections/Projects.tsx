@@ -6,23 +6,23 @@ import { ExternalLink, Droplet } from "lucide-react";
 const PROJECTS = [
   {
     id: "I",
-    title: "agent.exe",
-    description: "Automated workflow management.",
-    tech: "Vue / Electron",
+    titleKey: "proj.1.title",
+    descKey: "proj.1.desc",
+    tech: "Next.js / TypeScript",
     link: "https://github.com/aysesudeozden",
   },
   {
     id: "II",
-    title: "KAVŞAK360",
-    description: "Computer vision intersection control.",
-    tech: "Python / Raspberry Pi",
+    titleKey: "proj.2.title",
+    descKey: "proj.2.desc",
+    tech: "React Native / Firebase",
     link: "https://github.com/aysesudeozden",
   },
   {
     id: "III",
-    title: "Cinematch",
-    description: "Algorithmic movie recommendations.",
-    tech: "Next.js / Python",
+    titleKey: "proj.3.title",
+    descKey: "proj.3.desc",
+    tech: "Python / ML",
     link: "https://github.com/aysesudeozden",
   },
 ];
@@ -35,7 +35,7 @@ export default function Projects() {
       
       {/* Background mood lighting */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-theme-accent/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
-
+      
       <div className="max-w-6xl mx-auto relative z-10">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 border-b border-theme-border pb-8">
@@ -47,40 +47,43 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-12 md:gap-0">
-          {PROJECTS.map((project, idx) => (
-            <a 
-              key={idx} 
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block py-8 md:py-16 border-b border-theme-border/50 hover:border-theme-accent transition-colors duration-500"
-            >
-              {/* Frosted Hover Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-theme-surface to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10"></div>
+        <div className="space-y-16">
+          {PROJECTS.map((project, index) => (
+            <div key={index} className="group flex flex-col md:flex-row gap-8 items-start md:items-center justify-between border-b border-theme-border/30 pb-16 hover:border-theme-accent transition-colors duration-500">
               
-              <div className="flex flex-col md:flex-row items-baseline gap-4 md:gap-12 relative z-10">
-                <span className="font-serif text-theme-secondary/50 text-2xl md:text-4xl w-16 md:w-24 group-hover:text-theme-accent transition-colors duration-500">
+              <div className="flex items-start gap-8 w-full md:w-1/2">
+                <span className="font-serif text-4xl md:text-6xl text-theme-text-muted/30 group-hover:text-theme-accent/50 transition-colors italic leading-none">
                   {project.id}
                 </span>
-                
-                <h3 className="font-serif text-3xl md:text-6xl text-theme-text group-hover:translate-x-4 transition-transform duration-700 ease-out flex-1">
-                  {project.title}
-                </h3>
-                
-                <div className="flex-1 flex flex-col md:items-end text-left md:text-right mt-4 md:mt-0 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
-                  <p className="text-theme-text-muted mb-2 font-light">{project.description}</p>
-                  <p className="text-xs font-bold tracking-[0.2em] text-theme-secondary uppercase">{project.tech}</p>
-                </div>
-
-                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-theme-border group-hover:border-theme-accent group-hover:bg-theme-accent text-theme-text transition-all duration-500">
-                  <ExternalLink size={16} className="group-hover:rotate-45 transition-transform duration-500" />
+                <div>
+                  <h3 className="font-serif text-3xl md:text-4xl text-theme-text mb-4 group-hover:text-theme-secondary transition-colors">
+                    {t(project.titleKey)}
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-3 py-1 border border-theme-border text-theme-text-muted text-[10px] tracking-widest uppercase bg-theme-surface/30">
+                      {project.tech}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </a>
+
+              <div className="w-full md:w-1/2 md:pl-16">
+                <p className="text-theme-text-muted font-light leading-relaxed mb-8">
+                  {t(project.descKey)}
+                </p>
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-theme-text hover:text-theme-accent transition-colors"
+                >
+                  Explore <ExternalLink size={14} />
+                </a>
+              </div>
+
+            </div>
           ))}
         </div>
-
       </div>
     </section>
   );

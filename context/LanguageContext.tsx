@@ -38,13 +38,39 @@ const translations: Translations = {
   
   // Experience
   "exp.title": { tr: "Kayıtlar.", en: "Chronicles." },
+  "exp.intern1.title": { tr: "Yazılım Stajyeri", en: "Software Engineering Intern" },
+  "exp.intern1.desc": { tr: "Full-stack geliştirme süreçlerine katkı sağladım, modern web teknolojileriyle projeler geliştirdim.", en: "Contributed to full-stack development processes, developed projects with modern web technologies." },
+  "exp.intern2.title": { tr: "Frontend Stajyeri", en: "Frontend Developer Intern" },
+  "exp.intern2.desc": { tr: "Kullanıcı arayüzü tasarımı ve React bileşenleri üzerine yoğunlaştım.", en: "Focused on UI design and React component development." },
+  "exp.intern3.title": { tr: "Part-time Frontend Geliştirici", en: "Part-time Frontend Developer" },
+  "exp.intern3.desc": { tr: "Arayüz geliştirme konusunda deneyim kazandım.", en: "Gained experience in frontend development." },
+  "exp.company1": { tr: "Dataliva Bilişim A.Ş.", en: "Dataliva Inc." },
+  "exp.company2": { tr: "Ziraat Teknoloji A.Ş.", en: "Ziraat Technology Inc." },
+  "exp.company3": { tr: "Giresun Üniversitesi", en: "Giresun University" },
   
   // Education
   "edu.title": { tr: "Akademi.", en: "Academia." },
+  "edu.university": { tr: "Bilgisayar Mühendisliği (Lisans)", en: "Computer Engineering (B.Sc)" },
+  "edu.university.desc": { tr: "Yazılım geliştirme, algoritmalar ve veri yapıları üzerine odaklanarak mezun oldum.", en: "Graduated with a focus on software development, algorithms, and data structures." },
+  "edu.university.name": { tr: "Giresun Üniversitesi", en: "Giresun University" },
+  "edu.erasmus": { tr: "Erasmus+ Programı", en: "Erasmus+ Program" },
+  "edu.erasmus.desc": { tr: "Erasmus+ programı kapsamında Polonya'da eğitim aldım.", en: "I studied in Poland within the scope of the Erasmus+ program." },
+  "edu.erasmus.year": { tr: "Şubat - Temmuz 2023", en: "February - July 2023" },
+  "edu.erasmus.name": { tr: "Uniwersytet Kazimierza Wielkiego", en: "Kazimierz Wielki University" },
   
   // Projects
   "proj.title": { tr: "Sergiler.", en: "Exhibitions." },
   "proj.desc": { tr: "Dijital mimariler ve algoritmik çözümlerden oluşan seçkin bir koleksiyon.", en: "A curated selection of digital architectures and algorithmic solutions." },
+  "proj.1.title": { tr: "agent.exe", en: "agent.exe" },
+  "proj.1.desc": { tr: "Modern web teknolojileri kullanılarak geliştirilmiş interaktif platform.", en: "An interactive platform developed using modern web technologies." },
+  "proj.2.title": { tr: "KAVŞAK360", en: "KAVŞAK360" },
+  "proj.2.desc": { tr: "Gelişmiş kullanıcı deneyimi odaklı, hızlı ve güvenilir mobil uygulama arayüzü.", en: "Fast and reliable mobile application interface focused on advanced user experience." },
+  "proj.3.title": { tr: "Cinematch", en: "Cinematch" },
+  "proj.3.desc": { tr: "Kullanıcı tercihlerine göre algoritmik film öneri sistemi.", en: "Algorithmic movie recommendation system based on user preferences." },
+  
+  // Footer
+  "footer.rights": { tr: "Tüm hakları saklıdır.", en: "All rights reserved." },
+  "footer.motto": { tr: "Sonsuzluk için tasarlandı.", en: "Designed for eternity." },
   
   // Contact
   "contact.title": { tr: "Bağlantı Kuralım.", en: "Let's Connect." },

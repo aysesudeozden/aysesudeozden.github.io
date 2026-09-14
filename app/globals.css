@@ -5,29 +5,29 @@
 @tailwind utilities;
 
 :root {
-  /* "Overcast" (Light) Mode */
-  --theme-bg: #e5e7e6;
-  --theme-surface: #d8dbda;
-  --theme-border: #bcc2c0;
+  /* "Dawn" (Light) Mode - Pale crimson/grey */
+  --theme-bg: #f5ecee;
+  --theme-surface: #ebdadd;
+  --theme-border: #d6b8bd;
   
-  --theme-text: #1a221f;
-  --theme-text-muted: #53635e;
+  --theme-text: #2b1114;
+  --theme-text-muted: #6b3e45;
   
   --theme-accent: #7a1022;
-  --theme-secondary: #2C3E50;
+  --theme-secondary: #52161d;
 }
 
 .dark {
-  /* "Midnight" (Dark) Mode */
-  --theme-bg: #080c0b;
-  --theme-surface: #111816;
-  --theme-border: #1d2926;
+  /* "Volturi" (Dark) Mode - Deep blood red / black */
+  --theme-bg: #0c0505;
+  --theme-surface: #1a0a0b;
+  --theme-border: #331215;
   
-  --theme-text: #e0e6ed;
-  --theme-text-muted: #8c9b9a;
+  --theme-text: #e6c5c8;
+  --theme-text-muted: #a67c82;
   
-  --theme-accent: #7a1022;
-  --theme-secondary: #b4c5cc;
+  --theme-accent: #b01524;
+  --theme-secondary: #ff4d60;
 }
 
 * {
