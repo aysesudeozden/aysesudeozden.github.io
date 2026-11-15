@@ -1,53 +1,68 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { about, profile, ui } from "@/content/site";
+import { Reveal, Section } from "@/components/ui";
 
 export default function About() {
-  const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const { tx } = useLanguage();
 
   return (
-    <section ref={sectionRef} id="about" className="min-h-screen pt-32 pb-16 px-8 lg:px-16 relative bg-theme-bg flex items-center">
-      <div className={`w-full transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        
-        <h1 className="font-serif text-5xl md:text-7xl text-theme-text mb-12 font-light leading-snug">
-          {t('about.hero_text')}
-        </h1>
-        
-        <div className="space-y-8 text-theme-text-muted font-light leading-relaxed text-lg lg:text-xl">
-          <p className="border-l-2 border-theme-accent/50 pl-6 py-2">
-            {t('about.p1')}
-          </p>
-          <p>{t('about.p2')}</p>
-          <p>{t('about.p3')}</p>
-        </div>
-        
-        <div className="mt-16">
-           <h3 className="font-serif text-xl text-theme-text mb-6 border-b border-theme-border pb-2 inline-block">
-             {t('about.arsenal')}
-           </h3>
-           <div className="flex flex-wrap gap-4 mt-4">
-             {["Python", "TypeScript", "Next.js", "PostgreSQL", "Machine Learning"].map(skill => (
-               <span key={skill} className="px-4 py-2 border border-theme-border/50 text-theme-text-muted text-xs tracking-widest uppercase hover:border-theme-accent hover:text-theme-accent transition-colors cursor-pointer bg-theme-surface/30">
-                 {skill}
-               </span>
-             ))}
-           </div>
-        </div>
+    <Section id="about" meta={ui.sections.about}>
+      <div className="grid gap-12 md:grid-cols-[1fr_14rem] md:gap-16">
+        <Reveal className="space-y-5 text-[17px] leading-relaxed text-muted">
+          {about.paragraphs.map((p, i) => (
+            <p key={i} className={i === 0 ? "text-ink" : undefined}>
+              {tx(p)}
+            </p>
+          ))}
+        </Reveal>
+
+        {/* Küçük portre: siyah-beyaz, üzerine gelince renklenir */}
+        <Reveal delay={100} className="order-first md:order-none">
+          <div className="group relative aspect-[4/5] w-40 overflow-hidden rounded-lg border border-line md:w-full">
+            <Image
+              src="/avatar.jpg"
+              alt={profile.name}
+              fill
+              sizes="(min-width: 768px) 224px, 160px"
+              className="object-cover object-[50%_28%] grayscale transition duration-700 group-hover:grayscale-0"
+            />
+            <div className="absolute inset-0 bg-bordo opacity-25 mix-blend-color transition-opacity duration-700 group-hover:opacity-0" />
+          </div>
+          <p className="mt-2 font-mono text-[11px] text-dim">bu-benim.jpg</p>
+        </Reveal>
       </div>
-    </section>
+
+      <Reveal delay={150} className="mt-14 grid gap-10 sm:grid-cols-2">
+        <div>
+          <h3 className="mb-4 font-mono text-[12.5px] text-dim">
+            <span className="text-bordo-text">#</span> {tx(ui.now)}
+          </h3>
+          <ul className="space-y-2 text-[15.5px] text-muted">
+            {about.now.map((n, i) => (
+              <li key={i} className="flex gap-2.5">
+                <span className="font-mono text-bordo-text">&gt;</span>
+                <span>{tx(n)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="mb-4 font-mono text-[12.5px] text-dim">
+            <span className="text-bordo-text">#</span> {tx(ui.skills)}
+          </h3>
+          <dl className="space-y-2 font-mono text-[12.5px]">
+            {about.skills.map((group) => (
+              <div key={group.group.en} className="grid grid-cols-[5.5rem_1fr] gap-2">
+                <dt className="text-ink">{tx(group.group).toLowerCase()}:</dt>
+                <dd className="leading-6 text-muted">{group.items.join(", ")}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Reveal>
+    </Section>
   );
 }
